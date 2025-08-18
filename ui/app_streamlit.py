@@ -1,10 +1,14 @@
-import os, re, json, tempfile
+import os, re, json, tempfile, sys
 from pathlib import Path
 import streamlit as st
 from openai import OpenAI
 
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+if ROOT not in sys.path:
+    sys.path.insert(0, ROOT)
+
 from chatbot.rag import search_books, index_books
-from chatbot.tools import get_summary_by_title
+from tools.tools import get_summary_by_title
 from chatbot.extras import (
     sanitized_or_warning,
     tts_to_file_openai,
@@ -12,6 +16,7 @@ from chatbot.extras import (
     generate_cover_png,
     VOICE_DESCRIPTIONS,
 )
+
 
 st.set_page_config(page_title="Smart Librarian", page_icon="📚")
 st.title(" Smart Librarian")
@@ -22,6 +27,7 @@ with st.sidebar:
     api = st.text_input("OPENAI_API_KEY", type="password", value=os.getenv("OPENAI_API_KEY", ""))
     if api:
         os.environ["OPENAI_API_KEY"] = api
+        os.environ["CHROMA_OPENAI_API_KEY"] = api
 
     st.text_input("GPT model", value=os.getenv("GPT_MODEL", "gpt-4o-mini"), key="model")
 

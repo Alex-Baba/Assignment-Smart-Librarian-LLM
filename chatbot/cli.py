@@ -1,10 +1,16 @@
 import os, re, json
 from typing import Any, Dict, List
 from openai import OpenAI
+from dotenv import load_dotenv
 
 from chatbot.rag import search_books, index_books
 from chatbot.tools import get_summary_by_title
 from chatbot.extras import sanitized_or_warning, tts_say_cli, generate_cover_png
+
+load_dotenv()  # Load environment variables from .env file
+
+if os.getenv("OPENAI_API_KEY") and not os.getenv("CHROMA_OPENAI_API_KEY"):
+    os.environ["CHROMA_OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 
 # System prompt for LLM to recommend a book and explain rationale
 SYSTEM_PROMPT = """You are Smart Librarian. Recommend a single best-fit book given RAG search results.

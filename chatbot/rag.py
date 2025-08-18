@@ -3,6 +3,9 @@ from pathlib import Path
 from typing import Dict, List, Any
 import chromadb
 from chromadb.utils import embedding_functions
+from dotenv import load_dotenv
+
+load_dotenv()  # pick up .env in CLI runs
 
 # rag.py: Retrieval-Augmented Generation (RAG) module for Smart Librarian LLM
 # This module provides functions for document retrieval, embedding, and context generation for chatbot responses.
@@ -25,7 +28,11 @@ def _collection(name: str = "books"):
     """
     Get or create a ChromaDB collection with OpenAI embedding function.
     """
-    ef = embedding_functions.OpenAIEmbeddingFunction(model_name=EMBED_MODEL)
+    api_key = os.getenv("CHROMA_OPENAI_API_KEY") or os.getenv("OPENAI_API_KEY")
+    ef = embedding_functions.OpenAIEmbeddingFunction(
+        model_name=EMBED_MODEL,
+        api_key=api_key,               
+    )
     c = _client()
     try:
         return c.get_collection(name=name, embedding_function=ef)

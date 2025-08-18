@@ -1,21 +1,19 @@
-import openai
-import os
-from dotenv import load_dotenv
+import argparse, subprocess, sys
 
-load_dotenv()  # Load thy secrets from .env
+def main():
+    p = argparse.ArgumentParser()
+    p.add_argument("--cli", action="store_true", help="Run CLI recommender")
+    p.add_argument("--ui", action="store_true", help="Run Streamlit UI")
+    args = p.parse_args()
 
-api_key = os.getenv("OPENAI_API_KEY")
+    if args.cli:
+        from chatbot.cli import main as cli_main
+        cli_main()
+    elif args.ui:
+        cmd = [sys.executable, "-m", "streamlit", "run", "ui/app_streamlit.py"]
+        subprocess.run(cmd, check=False)
+    else:
+        print("Use --cli or --ui")
 
-
-openai.api_key = api_key
-
-client = openai.OpenAI(api_key=api_key)
-
-response = client.chat.completions.create(
-    model="gpt-4.1-nano",
-    messages=[
-        {"role": "user", "content": "What is the meaning of life?"}
-    ]
-)
-
-print(response.choices[0].message.content)
+if __name__ == "__main__":
+    main()
