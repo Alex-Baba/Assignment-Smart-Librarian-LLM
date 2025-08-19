@@ -3,6 +3,11 @@ from typing import Any, Dict, List
 from openai import OpenAI
 from dotenv import load_dotenv
 
+# Make project root importable (so `tools.*` and `chatbot.*` both resolve)
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+if ROOT not in sys.path:
+    sys.path.insert(0, ROOT)
+
 from chatbot.rag import search_books, index_books
 from chatbot.tools import get_summary_by_title
 from chatbot.extras import sanitized_or_warning, tts_say_cli, generate_cover_png

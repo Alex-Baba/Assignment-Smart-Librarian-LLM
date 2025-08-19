@@ -108,14 +108,15 @@ if st.button("Recommend"):
         st.write("**Top matches (RAG):**", hits)
 
         client = OpenAI()
-        system = (
-            "You are Smart Librarian. Recommend a single best-fit book given RAG search results. "
-            "Return JSON with keys 'title' and 'why'."
-        )
+        SYSTEM_PROMPT = """You are Smart Librarian. Recommend a single best-fit book given RAG search results.
+            Return a JSON object with keys:
+            "title" (exact recommended book title) and "why" (1-3 sentence rationale).
+            No extra keys.
+        """
         resp = client.responses.create(
             model=os.getenv("GPT_MODEL", "gpt-4o-mini"),
             input=[
-                {"role": "system", "content": system},
+                {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": q},
                 {"role": "system", "content": "RAG_CONTEXT: " + json.dumps({"results": hits})},
             ],

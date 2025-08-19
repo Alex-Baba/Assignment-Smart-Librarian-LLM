@@ -1,4 +1,4 @@
-import os, json
+import os, json, re
 from pathlib import Path
 from typing import Dict, List, Any
 from dotenv import load_dotenv
@@ -34,52 +34,89 @@ def _collection(name: str = "books"):
     except Exception:
         return c.create_collection(name=name, embedding_function=ef)
 
-# --- NEW: robust normalization for many JSON shapes ---
+def looks_like_title(s: str) -> bool:
+    if not isinstance(s, str):
+        return False
+    s = s.strip()
+    if not s or len(s) > 120:
+        return False
+    words = s.split()
+    if len(words) < 1 or len(words) > 12:
+        return False
+    if s.endswith((".", "!", "?")):  # summaries often end with sentence punctuation
+        return False
+    caps = sum(1 for w in words if w[:1].isupper())
+    return caps >= max(2, int(0.6 * len(words)))
+
+_TITLE_PLACEHOLDER = re.compile(r"^\s*book\s*\d+\s*$", re.I)
+
+def _pick_long_text(d: Dict[str, Any], exclude: str | None = None) -> str | None:
+    best, best_len = None, 0
+    for v in d.values():
+        if isinstance(v, str) and v != exclude:
+            n = len(v.split())
+            if n > best_len:
+                best, best_len = v, n
+    return best
+
 def _from_list(lst: List[Any]) -> Dict[str, str]:
-    """
-    Converts a list of book items (dicts or strings) to a normalized dict {title: summary}.
-    Handles various possible JSON shapes for book data.
-    """
+    """Normalize a list of items into {title: summary} (case-insensitive keys, fixes placeholders)."""
     out: Dict[str, str] = {}
     for i, item in enumerate(lst):
+        title, summary = None, None
+
         if isinstance(item, dict):
-            # Try to extract title and summary from known keys
-            title = item.get("title") or item.get("name") or f"Book {i+1}"
-            summary = (
-                item.get("summary")
-                or item.get("description")
-                or item.get("synopsis")
-                or ""
-            )
+            # case-insensitive keys
+            dl = {str(k).lower(): v for k, v in item.items()}
+            title = dl.get("title") or dl.get("name")
+            summary = dl.get("summary") or dl.get("description") or dl.get("synopsis")
+
+            # Treat "Book N" (or non-title-y strings) as missing title
+            if title and (_TITLE_PLACEHOLDER.match(title) or not looks_like_title(title)):
+                title = None
+
+            # If no reliable title but summary looks like a title, swap
+            if not title and isinstance(summary, str) and looks_like_title(summary):
+                long_text = _pick_long_text(dl, exclude=summary) or "(no summary provided)"
+                title, summary = summary, long_text
+
+            # If still no title, try any short, title-like string among values
+            if not title:
+                for v in dl.values():
+                    if isinstance(v, str) and looks_like_title(v):
+                        title = v
+                        break
+
+            # If still no summary, use the longest text value
             if not summary:
-                # Fallback: use any long string value as summary
-                for v in item.values():
-                    if isinstance(v, str) and len(v.split()) > 5:
-                        summary = v; break
-        else:
-            # If not a dict, treat as string
-            title = f"Book {i+1}"
-            summary = str(item)
-        out[title] = summary or "(no summary provided)"
+                summary = _pick_long_text(dl, exclude=title) or "(no summary provided)"
+
+        elif isinstance(item, str):
+            if looks_like_title(item):
+                title, summary = item, "(no summary provided)"
+            else:
+                title, summary = f"Book {i+1}", item
+
+        # Final guard
+        title = title or f"Book {i+1}"
+        summary = summary or "(no summary provided)"
+        out[title] = summary
+
     return out
 
 def load_summaries(path: Path = DATA_PATH) -> Dict[str, str]:
-    """
-    Loads and normalizes book summaries from a JSON file.
-    Supports dicts of title->summary, lists of dicts, or lists of strings.
-    """
     with open(path, "r", encoding="utf-8") as f:
         raw = json.load(f)
 
-    # Case 1: already dict of title->summary
+    # Case 1: dict container (handle {"books": [...]}, case-insensitive)
     if isinstance(raw, dict):
-        # Sometimes wrapped like {"books": [...]}
-        if "books" in raw and isinstance(raw["books"], list):
-            return _from_list(raw["books"])
-        # Otherwise assume {title: summary}
+        for k in ("books", "Books"):
+            if k in raw and isinstance(raw[k], list):
+                return _from_list(raw[k])
+        # Plain {title: summary} map (keep as-is)
         return {str(k): str(v) for k, v in raw.items()}
 
-    # Case 2: list of items
+    # Case 2: list of items (e.g., [{"Title": "Neuromancer", "Summary": "..."}])
     if isinstance(raw, list):
         return _from_list(raw)
 
