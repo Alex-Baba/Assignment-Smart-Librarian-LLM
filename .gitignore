@@ -1,2 +1,5 @@
 .env
 venv
+
+db_store
+chromadb
