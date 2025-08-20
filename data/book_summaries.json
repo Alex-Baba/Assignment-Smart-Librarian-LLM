@@ -1,82 +1,42 @@
 [
   {
-    "Title": "The Name of the Wind",
-    "Summary": "Kvothe, a gifted young man with a tragic past, recounts his life story from humble beginnings in a traveling troupe to his years at a magical university. He is driven by the need to uncover the truth behind the mythical Chandrian, the mysterious beings responsible for the murder of his family. Through music, magic, and hardship, Kvothe carves a name for himself in a world filled with legends, dangers, and secrets."
+    "Title": "The Hobbit",
+    "Summary": "Bilbo Baggins is whisked from his quiet life by a band of dwarves and the wizard Gandalf. On a quest to reclaim a lost kingdom, he faces trolls, goblins, spiders, and a dragon. Along the road he discovers courage he never knew he had.\nThemes: friendship; adventure; courage; homecoming"
   },
   {
-    "Title": "The Girl with the Dragon Tattoo",
-    "Summary": "Journalist Mikael Blomkvist is hired by a wealthy industrialist to solve the decades-old disappearance of his niece. With the help of Lisbeth Salander, a brilliant but troubled hacker, they uncover a twisted web of family secrets, violence, and corruption. As the mystery deepens, both are forced to confront demons from their own pasts."
+    "Title": "1984",
+    "Summary": "Winston Smith struggles for truth and individuality under a totalitarian regime that rewrites reality. His secret love affair becomes an act of rebellion. Surveillance and propaganda close in as he searches for freedom of thought.\nThemes: oppression; surveillance; truth vs. lies; individuality"
+  },
+  {
+    "Title": "To Kill a Mockingbird",
+    "Summary": "Young Scout Finch observes her father defend a Black man falsely accused in a segregated Southern town. Through childhood adventures and courtroom drama, she confronts injustice. Compassion becomes her compass in a divided community.\nThemes: justice; empathy; racism; moral growth"
   },
   {
     "Title": "Dune",
-    "Summary": "Set in a distant future where noble houses control planetary fiefdoms, Dune tells the story of Paul Atreides, heir to the House Atreides. When his family is betrayed and destroyed over the desert planet Arrakis\u2014a vital source of the universe's most valuable substance, the spice\u2014Paul must survive in the harsh wastelands, embrace a destiny foretold in prophecy, and rise as a messianic leader to reclaim his birthright."
+    "Summary": "Paul Atreides is thrust into a desert world where politics, prophecy, and ecology collide. As rival houses fight for control of spice, he learns the ways of the Fremen. Destiny reshapes him—and the future of the empire.\nThemes: power; ecology; destiny; religion; survival"
   },
   {
-    "Title": "The Rosie Project",
-    "Summary": "Don Tillman, a brilliant professor of genetics, sets out to find a wife using a strict questionnaire to filter candidates. His logical world is upended when he meets Rosie, a spontaneous and free-spirited bartender who is on a quest to find her biological father. Despite being the antithesis of his ideal partner, Rosie challenges Don\u2019s perceptions of love, compatibility, and what truly matters in relationships."
+    "Title": "The Name of the Wind",
+    "Summary": "Kvothe recounts his life—from orphaned street urchin to gifted student at a school of magic. He hunts for the truth behind a legendary tragedy. Music, wit, and obsession guide his rise and missteps.\nThemes: storytelling; identity; knowledge; ambition"
   },
   {
-    "Title": "The Southern Book Club\u2019s Guide to Slaying Vampires",
-    "Summary": "A group of suburban housewives in 1990s South Carolina forms a book club as an escape from their mundane lives. When a mysterious man moves into the neighborhood and children begin to go missing, the women suspect something sinister. Combining horror and humor, this novel is a blood-soaked tribute to female friendship and suburban strength."
-  },
-  {
-    "Title": "The Nightingale",
-    "Summary": "In Nazi-occupied France, two sisters, Vianne and Isabelle, must survive the horrors of war in different ways. Vianne tries to keep her daughter safe while Isabelle joins the resistance, risking her life to save others. Their courageous stories illuminate the often-overlooked sacrifices of women during wartime."
-  },
-  {
-    "Title": "A Man Called Ove",
-    "Summary": "Ove is a curmudgeonly old man with staunch principles, strict routines, and a short fuse. When a new family moves in next door and accidentally flattens his mailbox, it begins a transformation. Through laughter, grief, and unexpected friendship, Ove's life becomes a tender tale of rediscovery and hope."
-  },
-  {
-    "Title": "Mexican Gothic",
-    "Summary": "Noem\u00ed Taboada, a glamorous debutante, is sent to check on her cousin in a crumbling, eerie mansion. What she discovers is a haunting blend of fungus, ghosts, and ancient curses tied to a sinister family legacy. This novel is a chilling Gothic horror wrapped in rich Mexican folklore and style."
-  },
-  {
-    "Title": "Six of Crows",
-    "Summary": "In the bustling city of Ketterdam, criminal prodigy Kaz Brekker assembles a team of outcasts for an impossible heist. Each member carries a dark past and deadly skills. As they infiltrate a fortified stronghold, bonds form and secrets unravel in this thrilling fantasy adventure."
-  },
-  {
-    "Title": "Neuromancer",
-    "Summary": "Case, a washed-up hacker, is hired for a final job by a mysterious employer with vast resources. Set in a dystopian cyber-future, the novel explores AI, consciousness, and the limits of reality as Case dives into cyberspace one last time."
-  },
-  {
-    "Title": "Uprooted",
-    "Summary": "Agnieszka is chosen to serve the Dragon, a wizard who protects her village from the corrupted Wood. As she discovers her own magical abilities, she must confront the spreading darkness threatening to consume the land. This is a story of wild, untamed magic and the strength of a stubborn heart."
-  },
-  {
-    "Title": "The Lincoln Lawyer",
-    "Summary": "Defense attorney Mickey Haller runs his law practice from the backseat of his Lincoln. When he takes on a high-profile client, a wealthy man accused of assault, he finds himself entangled in a dangerous game of deceit and murder."
-  },
-  {
-    "Title": "Behind Closed Doors",
-    "Summary": "To the outside world, Jack and Grace Angel are the perfect couple\u2014he\u2019s a successful lawyer, she\u2019s a charming hostess. But behind locked doors lies a harrowing reality, as Grace struggles to escape a marriage that is a living nightmare."
-  },
-  {
-    "Title": "The Overstory",
-    "Summary": "Intertwining stories of nine strangers connected by trees, this novel explores how humans and nature are deeply interdependent. A sweeping ecological epic that challenges readers to reconsider their relationship with the natural world."
-  },
-  {
-    "Title": "Rebecca",
-    "Summary": "A young woman marries a wealthy widower and moves to his estate, only to find herself haunted by the memory of his glamorous first wife, Rebecca. As she uncovers disturbing truths, she must confront the past to claim her place in the present."
-  },
-  {
-    "Title": "Eleanor Oliphant is Completely Fine",
-    "Summary": "Eleanor leads a solitary, routine life, hiding emotional scars from her past. A chance encounter with a coworker draws her into a new world of friendship and healing. This is a story of loneliness, resilience, and the transformative power of kindness."
-  },
-  {
-    "Title": "The Immortal Life of Henrietta Lacks",
-    "Summary": "Henrietta Lacks, a poor Black woman, unknowingly became the source of the first immortal human cells used in medical research. This compelling biography delves into her legacy, the ethics of science, and the impact on her family."
-  },
-  {
-    "Title": "The Shadow of the Wind",
-    "Summary": "In post-war Barcelona, young Daniel discovers a mysterious novel in a hidden library. As he searches for the truth behind the author\u2019s disappearance, he uncovers a tale of passion, revenge, and lost love echoing through time."
-  },
-  {
-    "Title": "Like Water for Chocolate",
-    "Summary": "Tita\u2019s emotions infuse her cooking with magical consequences in this tale of forbidden love and family tradition. Each chapter, paired with a recipe, serves as a window into her struggles with love, loss, and rebellion."
+    "Title": "The Girl with the Dragon Tattoo",
+    "Summary": "Journalist Mikael Blomkvist and hacker Lisbeth Salander investigate a decades-old disappearance. Their pursuit uncovers corporate corruption and buried violence. Two uncommon allies learn to trust each other.\nThemes: justice; corruption; trauma; partnership"
   },
   {
     "Title": "The Ocean at the End of the Lane",
-    "Summary": "A man returns to his childhood home and recalls strange, magical events involving a neighbor girl and ancient forces. Blending memory, myth, and melancholy, this tale explores the fragility of innocence and the endurance of wonder."
+    "Summary": "A man revisits his childhood and a neighbor family with uncanny powers. Memory opens a door to ancient forces and quiet heroism. Wonder and fear mingle in a tale about what we keep and what we forget.\nThemes: memory; innocence; sacrifice; the supernatural"
+  },
+  {
+    "Title": "Neuromancer",
+    "Summary": "Washed-up hacker Case is hired for one last job in a neon-soaked future. He dives through cyberspace with a volatile partner and an AI with its own agenda. Reality blurs as he races against corporate and digital ghosts.\nThemes: technology; consciousness; freedom; alienation"
+  },
+  {
+    "Title": "The Night Circus",
+    "Summary": "Two young magicians are bound to a duel staged within a mysterious, midnight circus. As love blooms, the game’s rules turn dangerous. The performers’ fates entwine beneath tents of wonder and shadow.\nThemes: love; rivalry; destiny; imagination"
+  },
+  {
+    "Title": "The Overstory",
+    "Summary": "Strangers’ lives intersect through their ties to trees and forests. Their choices ripple across decades, confronting exploitation and awe. The natural world becomes both character and cause.\nThemes: nature; interconnectedness; activism; survival"
   }
 ]
