@@ -1,42 +1,502 @@
 [
   {
-    "Title": "The Hobbit",
-    "Summary": "Bilbo Baggins is whisked from his quiet life by a band of dwarves and the wizard Gandalf. On a quest to reclaim a lost kingdom, he faces trolls, goblins, spiders, and a dragon. Along the road he discovers courage he never knew he had.\nThemes: friendship; adventure; courage; homecoming"
+    "Title":"The Hobbit",
+    "Summary":"Bilbo Baggins is whisked from his quiet life by a band of dwarves and the wizard Gandalf. On a quest to reclaim a lost kingdom, he faces trolls, goblins, spiders, and a dragon. Along the road he discovers courage he never knew he had.\nThemes: friendship; adventure; courage; homecoming",
+    "Themes":null
   },
   {
-    "Title": "1984",
-    "Summary": "Winston Smith struggles for truth and individuality under a totalitarian regime that rewrites reality. His secret love affair becomes an act of rebellion. Surveillance and propaganda close in as he searches for freedom of thought.\nThemes: oppression; surveillance; truth vs. lies; individuality"
+    "Title":"1984",
+    "Summary":"Winston Smith struggles for truth and individuality under a totalitarian regime that rewrites reality. His secret love affair becomes an act of rebellion. Surveillance and propaganda close in as he searches for freedom of thought.\nThemes: oppression; surveillance; truth vs. lies; individuality",
+    "Themes":null
   },
   {
-    "Title": "To Kill a Mockingbird",
-    "Summary": "Young Scout Finch observes her father defend a Black man falsely accused in a segregated Southern town. Through childhood adventures and courtroom drama, she confronts injustice. Compassion becomes her compass in a divided community.\nThemes: justice; empathy; racism; moral growth"
+    "Title":"To Kill a Mockingbird",
+    "Summary":"Young Scout Finch observes her father defend a Black man falsely accused in a segregated Southern town. Through childhood adventures and courtroom drama, she confronts injustice. Compassion becomes her compass in a divided community.\nThemes: justice; empathy; racism; moral growth",
+    "Themes":null
   },
   {
-    "Title": "Dune",
-    "Summary": "Paul Atreides is thrust into a desert world where politics, prophecy, and ecology collide. As rival houses fight for control of spice, he learns the ways of the Fremen. Destiny reshapes him—and the future of the empire.\nThemes: power; ecology; destiny; religion; survival"
+    "Title":"Dune",
+    "Summary":"Paul Atreides is thrust into a desert world where politics, prophecy, and ecology collide. As rival houses fight for control of spice, he learns the ways of the Fremen. Destiny reshapes him\u2014and the future of the empire.\nThemes: power; ecology; destiny; religion; survival",
+    "Themes":null
   },
   {
-    "Title": "The Name of the Wind",
-    "Summary": "Kvothe recounts his life—from orphaned street urchin to gifted student at a school of magic. He hunts for the truth behind a legendary tragedy. Music, wit, and obsession guide his rise and missteps.\nThemes: storytelling; identity; knowledge; ambition"
+    "Title":"The Name of the Wind",
+    "Summary":"Kvothe recounts his life\u2014from orphaned street urchin to gifted student at a school of magic. He hunts for the truth behind a legendary tragedy. Music, wit, and obsession guide his rise and missteps.\nThemes: storytelling; identity; knowledge; ambition",
+    "Themes":null
   },
   {
-    "Title": "The Girl with the Dragon Tattoo",
-    "Summary": "Journalist Mikael Blomkvist and hacker Lisbeth Salander investigate a decades-old disappearance. Their pursuit uncovers corporate corruption and buried violence. Two uncommon allies learn to trust each other.\nThemes: justice; corruption; trauma; partnership"
+    "Title":"The Girl with the Dragon Tattoo",
+    "Summary":"Journalist Mikael Blomkvist and hacker Lisbeth Salander investigate a decades-old disappearance. Their pursuit uncovers corporate corruption and buried violence. Two uncommon allies learn to trust each other.\nThemes: justice; corruption; trauma; partnership",
+    "Themes":null
   },
   {
-    "Title": "The Ocean at the End of the Lane",
-    "Summary": "A man revisits his childhood and a neighbor family with uncanny powers. Memory opens a door to ancient forces and quiet heroism. Wonder and fear mingle in a tale about what we keep and what we forget.\nThemes: memory; innocence; sacrifice; the supernatural"
+    "Title":"The Ocean at the End of the Lane",
+    "Summary":"A man revisits his childhood and a neighbor family with uncanny powers. Memory opens a door to ancient forces and quiet heroism. Wonder and fear mingle in a tale about what we keep and what we forget.\nThemes: memory; innocence; sacrifice; the supernatural",
+    "Themes":null
   },
   {
-    "Title": "Neuromancer",
-    "Summary": "Washed-up hacker Case is hired for one last job in a neon-soaked future. He dives through cyberspace with a volatile partner and an AI with its own agenda. Reality blurs as he races against corporate and digital ghosts.\nThemes: technology; consciousness; freedom; alienation"
+    "Title":"Neuromancer",
+    "Summary":"Washed-up hacker Case is hired for one last job in a neon-soaked future. He dives through cyberspace with a volatile partner and an AI with its own agenda. Reality blurs as he races against corporate and digital ghosts.\nThemes: technology; consciousness; freedom; alienation",
+    "Themes":null
   },
   {
-    "Title": "The Night Circus",
-    "Summary": "Two young magicians are bound to a duel staged within a mysterious, midnight circus. As love blooms, the game’s rules turn dangerous. The performers’ fates entwine beneath tents of wonder and shadow.\nThemes: love; rivalry; destiny; imagination"
+    "Title":"The Night Circus",
+    "Summary":"Two young magicians are bound to a duel staged within a mysterious, midnight circus. As love blooms, the game\u2019s rules turn dangerous. The performers\u2019 fates entwine beneath tents of wonder and shadow.\nThemes: love; rivalry; destiny; imagination",
+    "Themes":null
   },
   {
-    "Title": "The Overstory",
-    "Summary": "Strangers’ lives intersect through their ties to trees and forests. Their choices ripple across decades, confronting exploitation and awe. The natural world becomes both character and cause.\nThemes: nature; interconnectedness; activism; survival"
+    "Title":"The Overstory",
+    "Summary":"Strangers\u2019 lives intersect through their ties to trees and forests. Their choices ripple across decades, confronting exploitation and awe. The natural world becomes both character and cause.\nThemes: nature; interconnectedness; activism; survival",
+    "Themes":null
+  },
+  {
+    "Title":"Pride and Prejudice",
+    "Summary":"Elizabeth Bennet navigates love, manners, and social standing in Regency England. Her wit and independence clash with Mr. Darcy's pride, leading to misunderstandings before love blossoms.",
+    "Themes":"love; class; pride; prejudice; family"
+  },
+  {
+    "Title":"Moby-Dick",
+    "Summary":"Captain Ahab obsessively hunts the white whale that maimed him. Ishmael narrates a voyage across vast oceans, filled with philosophy, danger, and obsession with nature\u2019s mysteries.",
+    "Themes":"obsession; revenge; fate; nature; madness"
+  },
+  {
+    "Title":"The Great Gatsby",
+    "Summary":"Jay Gatsby pursues wealth and glamour to win back Daisy Buchanan. Amid roaring twenties excess, Nick Carraway observes dreams corrode under greed and illusion.",
+    "Themes":"love; wealth; illusion; the American Dream; loss"
+  },
+  {
+    "Title":"Jane Eyre",
+    "Summary":"Orphaned Jane becomes a governess at Thornfield Hall, where she meets the brooding Mr. Rochester. Secrets and trials test her resolve, but she insists on dignity and independence.",
+    "Themes":"love; independence; morality; feminism; faith"
+  },
+  {
+    "Title":"Brave New World",
+    "Summary":"In a future society engineered for stability, individuality is suppressed by pleasure and conformity. John, the 'Savage,' confronts a world where freedom is sacrificed for comfort.",
+    "Themes":"control; individuality; technology; conformity; freedom"
+  },
+  {
+    "Title":"Frankenstein",
+    "Summary":"Victor Frankenstein creates life, but recoils at his monstrous creation. The creature seeks acceptance but finds only rejection, leading to vengeance.",
+    "Themes":"creation; responsibility; isolation; revenge"
+  },
+  {
+    "Title":"Dracula",
+    "Summary":"Jonathan Harker encounters the enigmatic Count Dracula. As Dracula spreads his dark influence, a group of allies battles to stop him.",
+    "Themes":"fear; evil; immortality; courage"
+  },
+  {
+    "Title":"Les Mis\u00e9rables",
+    "Summary":"Jean Valjean seeks redemption while Inspector Javert relentlessly pursues him. Love, sacrifice, and revolution sweep through 19th-century France.",
+    "Themes":"justice; redemption; love; sacrifice; revolution"
+  },
+  {
+    "Title":"Crime and Punishment",
+    "Summary":"Raskolnikov commits murder, believing himself above morality. Guilt and redemption unravel him as he faces the consequences of conscience.",
+    "Themes":"guilt; morality; punishment; redemption"
+  },
+  {
+    "Title":"The Brothers Karamazov",
+    "Summary":"The Karamazov family spirals into conflict over faith, morality, and patricide. Philosophical debates blend with family drama.",
+    "Themes":"faith; morality; family; justice; guilt"
+  },
+  {
+    "Title":"War and Peace",
+    "Summary":"Amid Napoleonic wars, Russian aristocrats grapple with love, destiny, and history\u2019s tide. Pierre and Natasha\u2019s journeys intertwine with battles and ideals.",
+    "Themes":"war; peace; love; destiny; history"
+  },
+  {
+    "Title":"Anna Karenina",
+    "Summary":"Trapped in a loveless marriage, Anna falls for Count Vronsky. Her affair sparks scandal and tragedy in Russian high society.",
+    "Themes":"love; betrayal; society; tragedy; morality"
+  },
+  {
+    "Title":"Wuthering Heights",
+    "Summary":"Catherine and Heathcliff\u2019s love is fierce, destructive, and transcendent. Generational conflict and revenge echo across the moors.",
+    "Themes":"love; revenge; passion; tragedy; family"
+  },
+  {
+    "Title":"The Catcher in the Rye",
+    "Summary":"Holden Caulfield wanders New York, disillusioned with adult hypocrisy and yearning for innocence. His voice captures adolescent angst.",
+    "Themes":"alienation; innocence; identity; rebellion"
+  },
+  {
+    "Title":"The Lord of the Rings",
+    "Summary":"Frodo Baggins carries the One Ring to Mordor to destroy it. Alongside friends and allies, he battles darkness and temptation.",
+    "Themes":"friendship; courage; destiny; good vs. evil"
+  },
+  {
+    "Title":"Harry Potter and the Sorcerer\u2019s Stone",
+    "Summary":"Harry discovers he is a wizard and attends Hogwarts. With friends Ron and Hermione, he faces magical trials and the shadow of Voldemort.",
+    "Themes":"friendship; courage; magic; identity"
+  },
+  {
+    "Title":"The Fellowship of the Ring",
+    "Summary":"The first volume of Tolkien\u2019s epic. Frodo begins his perilous journey to destroy the One Ring, aided by companions of diverse origins.",
+    "Themes":"friendship; courage; sacrifice; destiny"
+  },
+  {
+    "Title":"Great Expectations",
+    "Summary":"Pip\u2019s journey from orphan to gentleman is shaped by mysterious benefactors, love, and social class.",
+    "Themes":"class; ambition; love; identity"
+  },
+  {
+    "Title":"Don Quixote",
+    "Summary":"An aging nobleman imagines himself a knight-errant. With Sancho Panza, he tilts at windmills and redefines heroism.",
+    "Themes":"illusion; heroism; reality; folly"
+  },
+  {
+    "Title":"The Picture of Dorian Gray",
+    "Summary":"Dorian remains young while his portrait bears the scars of sin and age. Vanity and moral decay unravel him.",
+    "Themes":"vanity; morality; corruption; beauty"
+  },
+  {
+    "Title":"Madame Bovary",
+    "Summary":"Emma Bovary seeks romance beyond her provincial life. Her affairs and debts spiral toward tragedy.",
+    "Themes":"desire; disillusionment; society; tragedy"
+  },
+  {
+    "Title":"The Count of Monte Cristo",
+    "Summary":"Edmond Dant\u00e8s is wrongfully imprisoned but escapes to seek revenge with cunning and fortune.",
+    "Themes":"revenge; justice; betrayal; redemption"
+  },
+  {
+    "Title":"Fahrenheit 451",
+    "Summary":"In a world where books are banned, Guy Montag questions conformity and seeks truth through forbidden knowledge.",
+    "Themes":"censorship; knowledge; rebellion; freedom"
+  },
+  {
+    "Title":"The Martian",
+    "Summary":"Astronaut Mark Watney is stranded on Mars. With ingenuity and humor, he fights to survive until rescue.",
+    "Themes":"survival; ingenuity; isolation; hope"
+  },
+  {
+    "Title":"Foundation",
+    "Summary":"Hari Seldon predicts the fall of the Galactic Empire. His plan to preserve knowledge spans centuries of intrigue.",
+    "Themes":"knowledge; power; fate; survival"
+  },
+  {
+    "Title":"Snow Crash",
+    "Summary":"In a hyper-commercialized future, Hiro Protagonist battles a virtual drug threatening minds and society.",
+    "Themes":"technology; language; freedom; chaos"
+  },
+  {
+    "Title":"Ender\u2019s Game",
+    "Summary":"Child prodigy Ender Wiggin trains in a battle school to fight alien invaders, grappling with leadership and morality.",
+    "Themes":"war; morality; leadership; identity"
+  },
+  {
+    "Title":"A Game of Thrones",
+    "Summary":"Noble families vie for power in Westeros, where politics, prophecy, and betrayal shape kingdoms and destinies.",
+    "Themes":"power; betrayal; family; destiny"
+  },
+  {
+    "Title":"The Road",
+    "Summary":"A father and son journey through a post-apocalyptic wasteland, clinging to love and survival.",
+    "Themes":"survival; love; hope; despair"
+  },
+  {
+    "Title":"The Kite Runner",
+    "Summary":"Amir seeks redemption for betraying his childhood friend in war-torn Afghanistan.",
+    "Themes":"friendship; betrayal; redemption; guilt"
+  },
+  {
+    "Title":"Life of Pi",
+    "Summary":"Stranded at sea with a Bengal tiger, Pi Patel battles survival and faith.",
+    "Themes":"survival; faith; imagination; resilience"
+  },
+  {
+    "Title":"The Book Thief",
+    "Summary":"In Nazi Germany, Liesel finds solace in stolen books while Death narrates her story of love and loss.",
+    "Themes":"war; love; loss; books"
+  },
+  {
+    "Title":"The Hunger Games",
+    "Summary":"Katniss Everdeen volunteers for a deadly televised survival game, igniting rebellion.",
+    "Themes":"survival; rebellion; sacrifice; love"
+  },
+  {
+    "Title":"Divergent",
+    "Summary":"Tris Prior discovers she doesn\u2019t fit into her society\u2019s factions. Her divergence marks her as dangerous.",
+    "Themes":"identity; rebellion; love; courage"
+  },
+  {
+    "Title":"Oliver Twist",
+    "Summary":"An orphan navigates poverty, crime, and kindness in Dickens\u2019 tale of Victorian London.",
+    "Themes":"poverty; kindness; crime; society"
+  },
+  {
+    "Title":"David Copperfield",
+    "Summary":"David recounts his growth from childhood hardship to success as a writer.",
+    "Themes":"growth; perseverance; society; identity"
+  },
+  {
+    "Title":"The Scarlet Letter",
+    "Summary":"Hester Prynne endures shame and ostracism for bearing a child out of wedlock in Puritan New England.",
+    "Themes":"sin; guilt; society; redemption"
+  },
+  {
+    "Title":"Uncle Tom\u2019s Cabin",
+    "Summary":"Harriet Beecher Stowe\u2019s anti-slavery novel depicts cruelty and humanity amidst oppression.",
+    "Themes":"slavery; morality; faith; justice"
+  },
+  {
+    "Title":"Gone with the Wind",
+    "Summary":"Scarlett O\u2019Hara survives war and upheaval in the American South with resilience and desire.",
+    "Themes":"war; survival; love; society"
+  },
+  {
+    "Title":"The Left Hand of Darkness",
+    "Summary":"Genly Ai visits a planet with ambisexual inhabitants, confronting culture, gender, and trust.",
+    "Themes":"gender; trust; politics; survival"
+  },
+  {
+    "Title":"Hyperion",
+    "Summary":"Pilgrims tell interconnected tales while journeying to confront the Shrike, a mysterious entity.",
+    "Themes":"destiny; faith; storytelling; tragedy"
+  },
+  {
+    "Title":"Do Androids Dream of Electric Sheep?",
+    "Summary":"Rick Deckard hunts rogue androids in a post-apocalyptic world, questioning humanity itself.",
+    "Themes":"humanity; technology; morality; survival"
+  },
+  {
+    "Title":"The Time Machine",
+    "Summary":"A traveler journeys to the far future, witnessing humanity\u2019s evolution and decline.",
+    "Themes":"time; evolution; society; fate"
+  },
+  {
+    "Title":"20,000 Leagues Under the Sea",
+    "Summary":"Captain Nemo guides the Nautilus beneath the oceans, exploring wonders and mysteries.",
+    "Themes":"exploration; technology; freedom; mystery"
+  },
+  {
+    "Title":"The Silmarillion",
+    "Summary":"Tolkien\u2019s mythic history of Middle-earth recounts creation, heroes, and the struggle of light and dark.",
+    "Themes":"myth; creation; destiny; good vs. evil"
+  },
+  {
+    "Title":"Mistborn: The Final Empire",
+    "Summary":"Vin discovers her power among rebels fighting a thousand-year-old tyrant.",
+    "Themes":"rebellion; power; destiny; courage"
+  },
+  {
+    "Title":"Elantris",
+    "Summary":"A cursed city hides fallen gods. One princess uncovers secrets of faith and survival.",
+    "Themes":"faith; survival; identity; politics"
+  },
+  {
+    "Title":"The Way of Kings",
+    "Summary":"In Roshar, storms shape culture and destiny. Kaladin, Shallan, and Dalinar confront power and prophecy.",
+    "Themes":"power; prophecy; leadership; survival"
+  },
+  {
+    "Title":"The Lion, the Witch and the Wardrobe",
+    "Summary":"Children enter Narnia through a wardrobe, joining Aslan against the White Witch.",
+    "Themes":"faith; courage; good vs. evil; sacrifice"
+  },
+  {
+    "Title":"The Alchemist",
+    "Summary":"Santiago journeys to find treasure, discovering wisdom and destiny along the way.",
+    "Themes":"destiny; wisdom; faith; self-discovery"
+  },
+  {
+    "Title":"A Thousand Splendid Suns",
+    "Summary":"Two Afghan women\u2019s lives intertwine under oppression and war, forging resilience and love.",
+    "Themes":"resilience; love; oppression; survival"
+  },
+  {
+    "Title":"American Gods",
+    "Summary":"Shadow Moon enters a battle between old gods and new in modern America.",
+    "Themes":"myth; faith; identity; power"
+  },
+  {
+    "Title":"Never Let Me Go",
+    "Summary":"Children at a boarding school discover the haunting truth of their existence.",
+    "Themes":"identity; mortality; love; loss"
+  },
+  {
+    "Title":"The Shadow of the Wind",
+    "Summary":"A boy in post-war Barcelona discovers a mysterious book that changes his life.",
+    "Themes":"mystery; love; destiny; books"
+  },
+  {
+    "Title":"Cloud Atlas",
+    "Summary":"Interconnected stories across centuries reveal humanity\u2019s struggles and rebirths.",
+    "Themes":"interconnection; destiny; survival; power"
+  },
+  {
+    "Title":"The Girl on the Train",
+    "Summary":"A troubled woman becomes entangled in a missing persons case through obsession.",
+    "Themes":"obsession; mystery; truth; trauma"
+  },
+  {
+    "Title":"Gone Girl",
+    "Summary":"A husband becomes the suspect when his wife disappears, secrets unraveling.",
+    "Themes":"marriage; deception; truth; betrayal"
+  },
+  {
+    "Title":"The Da Vinci Code",
+    "Summary":"A symbologist races through Europe unraveling codes tied to ancient mysteries.",
+    "Themes":"mystery; religion; conspiracy; truth"
+  },
+  {
+    "Title":"Angels & Demons",
+    "Summary":"Robert Langdon confronts a secret society threatening Vatican City.",
+    "Themes":"faith; conspiracy; science; power"
+  },
+  {
+    "Title":"Beloved",
+    "Summary":"Set after the American Civil War, a woman is haunted by the ghost of her dead child and the trauma of slavery.",
+    "Themes":"slavery; trauma; motherhood; memory"
+  },
+  {
+    "Title":"Their Eyes Were Watching God",
+    "Summary":"Janie Crawford recounts her search for identity and love through three marriages in the early 20th-century South.",
+    "Themes":"identity; love; independence; society"
+  },
+  {
+    "Title":"Things Fall Apart",
+    "Summary":"Okonkwo struggles to uphold tradition as colonial forces disrupt Igbo society.",
+    "Themes":"tradition; colonialism; identity; change"
+  },
+  {
+    "Title":"One Hundred Years of Solitude",
+    "Summary":"The Buend\u00eda family saga unfolds in the magical town of Macondo, blending myth and reality.",
+    "Themes":"family; destiny; magic; solitude"
+  },
+  {
+    "Title":"Love in the Time of Cholera",
+    "Summary":"Florentino waits decades to reunite with Fermina in a meditation on love and time.",
+    "Themes":"love; time; destiny; perseverance"
+  },
+  {
+    "Title":"The Handmaid\u2019s Tale",
+    "Summary":"Offred narrates life under a theocratic regime where women are oppressed and reduced to roles.",
+    "Themes":"oppression; freedom; gender; resistance"
+  },
+  {
+    "Title":"Oryx and Crake",
+    "Summary":"In a dystopian future, genetic engineering reshapes humanity and nature in catastrophic ways.",
+    "Themes":"science; morality; dystopia; survival"
+  },
+  {
+    "Title":"The Testaments",
+    "Summary":"Sequel to The Handmaid\u2019s Tale, offering perspectives from within and outside Gilead.",
+    "Themes":"oppression; freedom; survival; rebellion"
+  },
+  {
+    "Title":"White Teeth",
+    "Summary":"Intergenerational immigrant families in London grapple with identity, history, and belonging.",
+    "Themes":"identity; immigration; history; family"
+  },
+  {
+    "Title":"Midnight\u2019s Children",
+    "Summary":"Born at the stroke of India\u2019s independence, Saleem Sinai\u2019s life mirrors the nation\u2019s turbulent history.",
+    "Themes":"identity; history; destiny; nation"
+  },
+  {
+    "Title":"The Last Wish",
+    "Summary":"A collection of interwoven stories following Geralt of Rivia, a monster hunter navigating morality, magic, and destiny in a dark fantasy world.",
+    "Themes":"destiny; morality; magic; survival"
+  },
+  {
+    "Title":"The Old Man and the Sea",
+    "Summary":"An aging fisherman battles a giant marlin, testing his endurance and spirit.",
+    "Themes":"struggle; endurance; nature; pride"
+  },
+  {
+    "Title":"Of Mice and Men",
+    "Summary":"Two migrant workers chase dreams of stability during the Great Depression, but fate intervenes.",
+    "Themes":"friendship; dreams; fate; hardship"
+  },
+  {
+    "Title":"The Grapes of Wrath",
+    "Summary":"The Joad family migrates west during the Dust Bowl, facing injustice and resilience.",
+    "Themes":"poverty; resilience; justice; family"
+  },
+  {
+    "Title":"A Tale of Two Cities",
+    "Summary":"Set during the French Revolution, love and sacrifice play out amidst chaos and vengeance.",
+    "Themes":"sacrifice; revolution; love; justice"
+  },
+  {
+    "Title":"Heart of Darkness",
+    "Summary":"Marlow journeys into the Congo, uncovering the darkness of colonialism and human nature.",
+    "Themes":"colonialism; darkness; morality; power"
+  },
+  {
+    "Title":"Brave New World Revisited",
+    "Summary":"A non-fiction follow-up where Huxley reflects on his dystopian vision and its growing relevance.",
+    "Themes":"society; control; technology; freedom"
+  },
+  {
+    "Title":"The Moon is a Harsh Mistress",
+    "Summary":"Colonists on the Moon rebel against Earth\u2019s rule with the help of a self-aware computer.",
+    "Themes":"rebellion; freedom; technology; politics"
+  },
+  {
+    "Title":"Childhood\u2019s End",
+    "Summary":"Humanity evolves under the guidance of mysterious alien Overlords, facing transcendence.",
+    "Themes":"evolution; transcendence; alien contact; destiny"
+  },
+  {
+    "Title":"Contact",
+    "Summary":"A scientist discovers extraterrestrial signals, sparking a journey across science and faith.",
+    "Themes":"faith; science; discovery; humanity"
+  },
+  {
+    "Title":"The Andromeda Strain",
+    "Summary":"Scientists race to contain a deadly extraterrestrial microorganism threatening Earth.",
+    "Themes":"science; survival; crisis; technology"
+  },
+  {
+    "Title":"The Once and Future King",
+    "Summary":"A retelling of Arthurian legend, exploring kingship, love, and destiny.",
+    "Themes":"myth; leadership; love; destiny"
+  },
+  {
+    "Title":"Jonathan Strange & Mr Norrell",
+    "Summary":"Two magicians revive English magic during the Napoleonic Wars, with rivalry and mystery.",
+    "Themes":"magic; rivalry; history; destiny"
+  },
+  {
+    "Title":"Good Omens",
+    "Summary":"An angel and demon team up to prevent the apocalypse with humor and heart.",
+    "Themes":"apocalypse; friendship; fate; humor"
+  },
+  {
+    "Title":"Eragon",
+    "Summary":"A farm boy discovers a dragon egg, beginning a quest of magic, destiny, and rebellion.",
+    "Themes":"destiny; rebellion; friendship; magic"
+  },
+  {
+    "Title":"The Golden Compass",
+    "Summary":"Lyra journeys across parallel worlds, battling power and seeking truth.",
+    "Themes":"freedom; destiny; childhood; authority"
+  },
+  {
+    "Title":"The Lovely Bones",
+    "Summary":"A murdered girl narrates from the afterlife, watching her family cope with grief and justice.",
+    "Themes":"loss; grief; family; healing"
+  },
+  {
+    "Title":"The Secret Life of Bees",
+    "Summary":"In the 1960s South, a girl finds solace and truth with three beekeeping sisters.",
+    "Themes":"family; love; identity; race"
+  },
+  {
+    "Title":"The Help",
+    "Summary":"In 1960s Mississippi, Black maids and white women confront prejudice and courage through secret writing.",
+    "Themes":"racism; courage; identity; justice"
+  },
+  {
+    "Title":"Room",
+    "Summary":"A boy raised in captivity with his mother discovers the outside world for the first time.",
+    "Themes":"freedom; survival; love; trauma"
+  },
+  {
+    "Title":"The Goldfinch",
+    "Summary":"After a tragedy, a boy clings to a stolen painting as he navigates loss, art, and identity.",
+    "Themes":"loss; art; identity; resilience"
   }
 ]

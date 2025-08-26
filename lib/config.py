@@ -27,7 +27,7 @@ def setup_page() -> None:
     load_dotenv()
     st.set_page_config(page_title="Smart Librarian", page_icon="📚")
     st.title("📚 Smart Librarian")
-    st.caption("RAG with ChromaDB + OpenAI — reads your JSON exactly as-is.")
+    #st.caption("RAG with ChromaDB + OpenAI — reads your JSON exactly as-is.")
 
 @dataclass
 class AppConfig:
