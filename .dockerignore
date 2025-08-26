@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.venv/
+venv/
+
+# Git / editors
+.git/
+.gitignore
+.vscode/
+.idea/
+
+# Local data that shouldn't inflate images
+db_store/
+*.mp3
+*.wav
+*.png
+*.jpg
+*.jpeg
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Env files (don’t bake secrets into the image)
+.env

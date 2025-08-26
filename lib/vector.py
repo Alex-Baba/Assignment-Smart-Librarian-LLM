@@ -9,11 +9,13 @@ from chromadb.utils import embedding_functions
 from .data import load_summaries
 
 ROOT = Path(__file__).resolve().parents[1]
-CHROMA_DIR = ROOT / "db_store"
+DEFAULT_CHROMA_DIR = str(ROOT / "db_store")
+CHROMA_DIR = os.environ.get("CHROMA_DIR", DEFAULT_CHROMA_DIR)
 
 def client():
     """Create and return a persistent ChromaDB client for vector storage."""
-    return chromadb.PersistentClient(path=str(CHROMA_DIR))
+    os.makedirs(CHROMA_DIR, exist_ok=True)
+    return chromadb.PersistentClient(path=CHROMA_DIR)
 
 def collection(embed_model: str, name: str = "books"):
     """
@@ -62,7 +64,7 @@ def reset_db() -> None:
     """
     Delete the ChromaDB storage directories to reset the vector database.
     """
-    for d in [CHROMA_DIR, ROOT / "chroma_db"]:
+    for d in [Path(CHROMA_DIR), ROOT / "chroma_db"]:
         if d.exists() and d.is_dir():
             shutil.rmtree(d, ignore_errors=True)
 

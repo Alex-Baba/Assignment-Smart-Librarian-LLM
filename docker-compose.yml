@@ -1,0 +1,27 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: smart-librarian
+    container_name: smart-librarian
+    ports:
+      - "8501:8501"
+    environment:
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      SMARTLIB_ADMIN: ${SMARTLIB_ADMIN:-0}
+    volumes:
+      - chroma_data:/app/db_store          # named volume (RW)
+      - ./data:/app/data:ro
+    user: "0:0"
+    command:
+      - /bin/sh
+      - -lc
+      - >
+        mkdir -p /app/db_store &&
+        chmod -R a+rwX /app/db_store &&
+        streamlit run ui/app_streamlit.py --server.port=8501 --server.address=0.0.0.0
+    restart: unless-stopped
+
+volumes:
+  chroma_data: {}
