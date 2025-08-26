@@ -22,6 +22,9 @@ class AppConfig:
     auto_reset: bool
     moderation_on: bool
     moderation_block: bool
+    use_image: bool
+    image_style: str
+    image_size: str
 
 def sidebar_config() -> tuple[AppConfig, bool]:
     with st.sidebar:
@@ -39,20 +42,67 @@ def sidebar_config() -> tuple[AppConfig, bool]:
         st.markdown("### Retrieval & Selection")
         top_k = st.slider("Top-K results", 1, 5, 3, key="opt_top_k")
         use_llm = st.checkbox("Use LLM to choose among top-K", value=True, key="opt_use_llm")
-        text_model = st.text_input("Text model", os.getenv("GPT_MODEL", "gpt-4o-mini"), key="opt_model_text")
-        embed_model = st.text_input("Embedding model", os.getenv("EMBED_MODEL", "text-embedding-3-small"), key="opt_embed_model")
+        text_model = st.text_input(
+            "Text model",
+            os.getenv("GPT_MODEL", "gpt-4o-mini"),
+            key="opt_model_text"
+        )
+        embed_model = st.text_input(
+            "Embedding model",
+            os.getenv("EMBED_MODEL", "text-embedding-3-small"),
+            key="opt_embed_model"
+        )
 
         st.markdown("### Optional: Text-to-Speech")
         use_tts = st.checkbox("Speak the recommendation", value=False, key="opt_use_tts")
-        voice = st.selectbox("Voice", ["alloy", "verse", "charlie", "sage", "nova", "atticus"], index=0, key="opt_voice")
+        voice = st.selectbox(
+            "Voice",
+            ["alloy", "verse", "charlie", "sage", "nova", "atticus"],
+            index=0,
+            key="opt_voice"
+        )
 
         st.markdown("### Safety")
-        moderation_on    = st.checkbox("Enable safety filter (OpenAI Moderation)", value=True, key="opt_moderation_on")
-        moderation_block = st.checkbox("Block request when flagged", value=False, key="opt_moderation_block")
+        moderation_on = st.checkbox(
+            "Enable safety filter (OpenAI Moderation)",
+            value=True,
+            key="opt_moderation_on"
+        )
+        moderation_block = st.checkbox(
+            "Block request when flagged",
+            value=False,
+            key="opt_moderation_block"
+        )
+
+        st.markdown("### Image (optional)")
+        use_image = st.checkbox(
+            "Generate an image for the recommendation",
+            value=True,
+            key="opt_use_image"
+        )
+        image_style = st.selectbox(
+            "Image style",
+            ["Default", "Watercolor", "Dark fantasy", "Whimsical", "Sci-fi neon", "Minimalist"],
+            index=0,
+            key="opt_image_style"
+        )
+        image_size = st.selectbox(
+            "Image size",
+            ["512x512", "768x768", "1024x1024"],
+            index=2,
+            key="opt_image_size"
+        )
 
         st.markdown("### Index control")
-        auto_reset = st.checkbox("Auto-reset & reindex on app start (once per session)", value=True, key="opt_autoreset")
-        reset_now = st.button("🔁 Reset index now (delete DB & rebuild)", key="btn_reset_now")
+        auto_reset = st.checkbox(
+            "Auto-reset & reindex on app start (once per session)",
+            value=True,
+            key="opt_autoreset"
+        )
+        reset_now = st.button(
+            "🔁 Reset index now (delete DB & rebuild)",
+            key="btn_reset_now"
+        )
 
     cfg = AppConfig(
         api_key=os.getenv("OPENAI_API_KEY", ""),
@@ -65,5 +115,8 @@ def sidebar_config() -> tuple[AppConfig, bool]:
         auto_reset=auto_reset,
         moderation_on=moderation_on,
         moderation_block=moderation_block,
+        use_image=use_image,
+        image_style=image_style,
+        image_size=image_size,
     )
     return cfg, reset_now
