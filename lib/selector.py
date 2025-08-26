@@ -3,6 +3,7 @@ import json, re
 from typing import Any, Dict, List
 from openai import OpenAI
 
+# System prompt for the LLM: instructs it to pick a book from RAG_CONTEXT and explain why.
 SYSTEM_PROMPT = """You are Smart Librarian.
 Given RAG_CONTEXT (a list of results with metadatas.title), pick ONE book.
 Return ONLY JSON: {"title": "...", "why": "..."}.
@@ -12,9 +13,14 @@ Return ONLY JSON: {"title": "...", "why": "..."}.
 """
 
 def _normalize(s: str) -> str:
+    """Lowercase and remove non-alphanumeric characters for fuzzy matching."""
     return re.sub(r"[^a-z0-9]+", " ", (s or "").lower()).strip()
 
 def snap_to_hits(candidate_title: str, hits: List[Dict[str, Any]]) -> str:
+    """
+    Snap the candidate title from LLM output to a valid title in the hits list.
+    Uses normalization and fuzzy matching to ensure the title matches one of the results.
+    """
     if not hits:
         return candidate_title or ""
     allowed = [h["title"] for h in hits if h.get("title")]
@@ -33,7 +39,11 @@ def snap_to_hits(candidate_title: str, hits: List[Dict[str, Any]]) -> str:
     return allowed[0]
 
 def llm_select(user_query: str, hits: List[Dict[str, Any]], model_name: str) -> Dict[str, str]:
-    """Ask the LLM to choose among hits; then snap the title to a valid hit."""
+    """
+    Use an LLM to select the best book from the search hits.
+    Returns a dict with the chosen title and a reason ("why").
+    Falls back to the first result if parsing fails.
+    """
     if not hits:
         return {"title": "", "why": "No results to recommend."}
 
@@ -61,6 +71,7 @@ def llm_select(user_query: str, hits: List[Dict[str, Any]], model_name: str) -> 
         )
         txt = (cc.choices[0].message.content or "") if cc.choices else ""
 
+    # Extract JSON from LLM output
     m = re.search(r"\{.*\}", txt, flags=re.S)
     data: Dict[str, Any] = {}
     if m:
@@ -69,6 +80,7 @@ def llm_select(user_query: str, hits: List[Dict[str, Any]], model_name: str) -> 
         except Exception:
             data = {}
 
+    # Snap the title to a valid hit and get the reason
     candidate = (data.get("title") if isinstance(data, dict) else "") or ""
     title = snap_to_hits(candidate, hits)
     why = (data.get("why") if isinstance(data, dict) else None) or "Top semantic match from your query."

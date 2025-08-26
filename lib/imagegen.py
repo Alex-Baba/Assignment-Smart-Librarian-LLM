@@ -4,6 +4,10 @@ from typing import Optional
 from openai import OpenAI
 
 def _style_phrase(style: str) -> str:
+    """
+    Map a style name to a descriptive phrase for the image prompt.
+    Used to guide the AI image generation for different artistic styles.
+    """
     styles = {
         "Default": "",
         "Watercolor": "in a soft watercolor illustration style",
@@ -22,10 +26,22 @@ def generate_book_image(
     quality: str = "medium",
 ) -> bytes:
     """
-    Returns raw image bytes for Streamlit (st.image accepts bytes).
+    Generate a book cover image using OpenAI's image API.
+    Returns raw image bytes suitable for display in Streamlit.
+
+    Args:
+        title: Book title for the cover.
+        summary: Optional plot summary for context.
+        style: Artistic style for the image.
+        size: Image size (e.g., "1024x1024").
+        quality: Image quality (default "medium").
+
+    Returns:
+        Raw image bytes (PNG/JPEG) decoded from base64.
     """
     client = OpenAI()
 
+    # Compose the prompt for the image generation model
     prompt = (
         f"Book cover concept art for the novel '{title}'. "
         f"{('Plot gist: ' + summary[:500]) if summary else ''} "
@@ -35,6 +51,7 @@ def generate_book_image(
         "Square composition, cinematic lighting."
     )
 
+    # Call OpenAI's image generation API
     resp = client.images.generate(
         model="gpt-image-1",
         prompt=prompt,
