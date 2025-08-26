@@ -17,6 +17,12 @@ from lib.tts import tts_to_file
 from lib.moderation import moderate_text, looks_like_bad_words
 from lib.imagegen import generate_book_image
 
+
+# Cached Chroma collection (prevents multiple writers / re-inits)
+@st.cache_resource
+def cached_collection(embed_model: str):
+    from lib.vector import collection
+    return collection(embed_model)
 # ---------- helpers & state ----------
 
 @st.cache_data(show_spinner=False)
@@ -24,7 +30,15 @@ def _img_cache(title: str, summary: str, style: str, size: str) -> bytes:
     """Cache image bytes to avoid regenerating the same prompt/style/size."""
     return generate_book_image(title, summary, style=style, size=size)
 
-def _init_state() -> None:
+def _init_state()-> None:
+    # Debug info: show where Chroma writes (collapsed)
+    try:
+        from lib.vector import CHROMA_DIR
+        with st.expander("ℹ️ Debug: Vector store path", expanded=False):
+            st.code(f"CHROMA_DIR = {CHROMA_DIR}", language="bash")
+    except Exception:
+        pass
+ 
     """Initialize Streamlit session state variables for recommendations and generated media."""
     st.session_state.setdefault("rec_ready", False)
     st.session_state.setdefault("rec_hits", [])
@@ -126,6 +140,14 @@ def main() -> None:
     cfg, reset_now = sidebar_config()
     admin = is_admin_mode()
     _init_state()
+    # Debug info: show where Chroma writes (collapsed)
+    try:
+        from lib.vector import CHROMA_DIR
+        with st.expander("ℹ️ Debug: Vector store path", expanded=False):
+            st.code(f"CHROMA_DIR = {CHROMA_DIR}", language="bash")
+    except Exception:
+        pass
+
 
     # Manual reset (admin-only visible via sidebar_config)
     if reset_now:
@@ -138,16 +160,15 @@ def main() -> None:
         st.session_state.img_bytes = None
         st.session_state.img_caption = ""
 
-    # Auto reset once per session (hidden default for users)
-    if cfg.auto_reset and "auto_reset_done" not in st.session_state:
-        with st.spinner("Resetting vector DB & reindexing…"):
-            n = reset_and_rebuild(cfg.embed_model)
-            if admin:
-                st.success(f"Rebuilt index with {n} books.")
-                st.session_state["auto_reset_done"] = True
-                st.success(f"Fresh index built with {n} books.")
-
-    # Query UI: user enters a reading preference or genre
+    # Auto reset once per session (hidden default for users)if cfg.auto_reset and "auto_reset_done" not in st.session_state:
+    with st.spinner("Resetting vector DB & reindexing…"):
+        n = reset_and_rebuild(cfg.embed_model)
+    if admin:
+        st.success(f"Rebuilt index with {n} books.")
+    st.session_state["auto_reset_done"] = True
+    if admin:
+        st.success(f"Fresh index built with {n} books.")
+# Query UI: user enters a reading preference or genre
     q = st.text_input("What do you feel like reading?", key="query_input")
     go = st.button("Recommend", key="btn_recommend")
 
@@ -173,6 +194,7 @@ def main() -> None:
 
         # Retrieve recommendations using semantic search
         ensure_index(cfg.embed_model)
+        _ = cached_collection(cfg.embed_model)  # warm singleton
         hits = search_books(q, k=cfg.top_k, embed_model=cfg.embed_model)
 
         # Show raw matches for admins

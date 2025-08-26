@@ -1,36 +1,26 @@
-# Use a small multi-arch Python image
+# Dockerfile
+
+# Start with the base image
 FROM python:3.11-slim
 
-# System deps (chromadb / hnswlib sometimes need libgomp)
+# Install system dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential libgomp1 && \
+    build-essential \
+    libgomp1 && \
     rm -rf /var/lib/apt/lists/*
 
-# Set workdir
+# Set the working directory inside the container
 WORKDIR /app
 
-# Copy only dependency files first (better layer caching)
+# Copy the requirements file and install Python dependencies
 COPY requirements.txt ./requirements.txt
-
-# Install Python deps
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the app
+# Copy the application code into the container
 COPY . /app
 
-# Environment defaults (safe to override at runtime)
-ENV PYTHONUNBUFFERED=1 \
-    STREAMLIT_SERVER_HEADLESS=true \
-    STREAMLIT_SERVER_PORT=8501
-
-# Expose Streamlit port
+# Expose the port Streamlit will run on
 EXPOSE 8501
 
-# Create a non-root user (optional but recommended)
-RUN useradd -m appuser && chown -R appuser:appuser /app
-USER appuser
-
-# Persist Chroma DB inside /app/db_store by default
-VOLUME ["/app/db_store"]
-
+# Define the command to run the application
 CMD ["streamlit", "run", "ui/app_streamlit.py", "--server.port=8501", "--server.address=0.0.0.0"]

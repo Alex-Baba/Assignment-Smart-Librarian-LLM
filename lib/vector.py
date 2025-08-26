@@ -9,13 +9,79 @@ from chromadb.utils import embedding_functions
 from .data import load_summaries
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_CHROMA_DIR = str(ROOT / "db_store")
+DEFAULT_CHROMA_DIR = "/tmp/chroma_smart_librarian"
 CHROMA_DIR = os.environ.get("CHROMA_DIR", DEFAULT_CHROMA_DIR)
 
+def _pick_writable_dir(preferred: str, fallbacks=None) -> str:
+    """
+    Return a writable directory path for Chroma storage.
+    Verifies by creating a temp file. Falls back to /tmp/chroma_smart_librarian.
+    """
+    import tempfile
+    from pathlib import Path
+    fallbacks = fallbacks or ["/tmp/chroma_smart_librarian"]
+    candidates = [preferred] + [d for d in fallbacks if d]
+    for d in candidates:
+        try:
+            os.makedirs(d, exist_ok=True)
+            test = Path(d) / ".write_test"
+            with open(test, "w") as f:
+                f.write("ok")
+            test.unlink(missing_ok=True)
+            return d
+        except Exception:
+            continue
+    # last resort
+    d = str(Path(tempfile.gettempdir()) / "chroma_smart_librarian")
+    os.makedirs(d, exist_ok=True)
+    return d
+
+BASE_CHROMA_DIR = _pick_writable_dir(CHROMA_DIR)
+ACTIVE_CHROMA_DIR = os.path.join(BASE_CHROMA_DIR, f"run-{os.getpid()}")
+
+def _pick_writable_dir(preferred: str, fallbacks=None) -> str:
+    """
+    Return a writable directory path for Chroma storage.
+    Tries `preferred` then fallbacks (default: ['/tmp/chroma']).
+    """
+    import tempfile
+    from pathlib import Path
+    fallbacks = fallbacks or ["/tmp/chroma"]
+    candidates = [preferred] + [d for d in fallbacks if d]
+    for d in candidates:
+        try:
+            os.makedirs(d, exist_ok=True)
+            test = Path(d) / ".write_test"
+            with open(test, "w") as f:
+                f.write("ok")
+            test.unlink(missing_ok=True)
+            return d
+        except Exception:
+            continue
+    # As a last resort, use system tmp
+    d = str(Path(tempfile.gettempdir()) / "chroma")
+    os.makedirs(d, exist_ok=True)
+    return d
+
 def client():
-    """Create and return a persistent ChromaDB client for vector storage."""
-    os.makedirs(CHROMA_DIR, exist_ok=True)
-    return chromadb.PersistentClient(path=CHROMA_DIR)
+    """Create and return a persistent ChromaDB client for vector storage.
+    Ensures the directory is writable; falls back if needed.
+    """
+    writable = BASE_CHROMA_DIR
+    os.makedirs(ACTIVE_CHROMA_DIR, exist_ok=True)
+    try:
+        os.chmod(ACTIVE_CHROMA_DIR, 0o777)
+    except Exception:
+        pass
+    if not getattr(client, "_logged_path", False):
+        try:
+            import sys
+            print(f"[SmartLibrarian] Chroma base: {writable}", file=sys.stderr)
+            print(f"[SmartLibrarian] Chroma active: {ACTIVE_CHROMA_DIR}", file=sys.stderr)
+        except Exception:
+            pass
+        client._logged_path = True
+    return chromadb.PersistentClient(path=ACTIVE_CHROMA_DIR)
 
 def collection(embed_model: str, name: str = "books"):
     """
@@ -61,18 +127,22 @@ def ensure_index(embed_model: str) -> int:
     return n
 
 def reset_db() -> None:
-    """
-    Delete the ChromaDB storage directories to reset the vector database.
-    """
-    for d in [Path(CHROMA_DIR), ROOT / "chroma_db"]:
-        if d.exists() and d.is_dir():
-            shutil.rmtree(d, ignore_errors=True)
+    """Remove the ACTIVE Chroma storage directory to reset the DB."""
+    d = Path(ACTIVE_CHROMA_DIR)
+    if d.exists() and d.is_dir():
+        try:
+            # Make sure contents are writable before deletion
+            for pth in d.rglob("*"):
+                try:
+                    os.chmod(pth, 0o777)
+                except Exception:
+                    pass
+        except Exception:
+            pass
+        shutil.rmtree(d, ignore_errors=True)
 
 def reset_and_rebuild(embed_model: str) -> int:
-    """
-    Reset the vector database and rebuild the index from scratch.
-    Returns the number of books indexed.
-    """
+    """Reset the DB and rebuild the index from scratch; return count."""
     reset_db()
     return index_books(embed_model)
 
