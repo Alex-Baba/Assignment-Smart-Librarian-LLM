@@ -7,7 +7,7 @@ SYSTEM_PROMPT = """You are Smart Librarian.
 Given RAG_CONTEXT (a list of results with metadatas.title), pick ONE book.
 Return ONLY JSON: {"title": "...", "why": "..."}.
 - "title" MUST be copied VERBATIM from a metadatas.title in RAG_CONTEXT.
-- "why" = 1–3 sentences using the user's request and context.
+- "why" = 1–3 sentences in English using the user's request and context.
 - Do not invent titles. If unsure, pick the first result's title verbatim.
 """
 
@@ -33,23 +33,42 @@ def snap_to_hits(candidate_title: str, hits: List[Dict[str, Any]]) -> str:
     return allowed[0]
 
 def llm_select(user_query: str, hits: List[Dict[str, Any]], model_name: str) -> Dict[str, str]:
+    """Ask the LLM to choose among hits; then snap the title to a valid hit."""
+    if not hits:
+        return {"title": "", "why": "No results to recommend."}
+
     client = OpenAI()
-    resp = client.responses.create(
-        model=model_name,
-        input=[
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": user_query},
-            {"role": "system", "content": "RAG_CONTEXT: " + json.dumps({"results": hits})},
-        ],
-    )
-    txt = resp.output_text
+
+    # Prefer Responses API; fall back to Chat Completions for older setups
+    try:
+        resp = client.responses.create(
+            model=model_name,
+            input=[
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": user_query},
+                {"role": "system", "content": "RAG_CONTEXT: " + json.dumps({"results": hits})},
+            ],
+        )
+        txt = resp.output_text or ""
+    except Exception:
+        cc = client.chat.completions.create(
+            model=model_name,
+            messages=[
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": user_query},
+                {"role": "system", "content": "RAG_CONTEXT: " + json.dumps({"results": hits})},
+            ],
+        )
+        txt = (cc.choices[0].message.content or "") if cc.choices else ""
+
     m = re.search(r"\{.*\}", txt, flags=re.S)
     data: Dict[str, Any] = {}
     if m:
         try:
             data = json.loads(m.group(0))
         except Exception:
-            pass
+            data = {}
+
     candidate = (data.get("title") if isinstance(data, dict) else "") or ""
     title = snap_to_hits(candidate, hits)
     why = (data.get("why") if isinstance(data, dict) else None) or "Top semantic match from your query."

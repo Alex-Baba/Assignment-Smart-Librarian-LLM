@@ -5,7 +5,6 @@ import streamlit as st
 from dotenv import load_dotenv
 
 def setup_page() -> None:
-    """Set Streamlit page metadata and header."""
     load_dotenv()
     st.set_page_config(page_title="Smart Librarian", page_icon="📚")
     st.title("📚 Smart Librarian")
@@ -21,9 +20,10 @@ class AppConfig:
     use_tts: bool
     voice: str
     auto_reset: bool
+    moderation_on: bool
+    moderation_block: bool
 
 def sidebar_config() -> tuple[AppConfig, bool]:
-    """Render sidebar controls and return (config, reset_now_clicked)."""
     with st.sidebar:
         st.subheader("Setup")
         api = st.text_input(
@@ -46,6 +46,10 @@ def sidebar_config() -> tuple[AppConfig, bool]:
         use_tts = st.checkbox("Speak the recommendation", value=False, key="opt_use_tts")
         voice = st.selectbox("Voice", ["alloy", "verse", "charlie", "sage", "nova", "atticus"], index=0, key="opt_voice")
 
+        st.markdown("### Safety")
+        moderation_on    = st.checkbox("Enable safety filter (OpenAI Moderation)", value=True, key="opt_moderation_on")
+        moderation_block = st.checkbox("Block request when flagged", value=False, key="opt_moderation_block")
+
         st.markdown("### Index control")
         auto_reset = st.checkbox("Auto-reset & reindex on app start (once per session)", value=True, key="opt_autoreset")
         reset_now = st.button("🔁 Reset index now (delete DB & rebuild)", key="btn_reset_now")
@@ -59,5 +63,7 @@ def sidebar_config() -> tuple[AppConfig, bool]:
         use_tts=use_tts,
         voice=voice,
         auto_reset=auto_reset,
+        moderation_on=moderation_on,
+        moderation_block=moderation_block,
     )
     return cfg, reset_now
