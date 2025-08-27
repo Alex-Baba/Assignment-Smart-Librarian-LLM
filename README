@@ -10,7 +10,7 @@ Smart Librarian is an AI-powered application built with **Streamlit** and **Chro
 - 📖 **Summaries** – Generates summaries for books in the library.  
 - 🧑‍💻 **Dual Mode** –  
   - **User Mode:** Search, ask questions, and get suggestions.  
-  - **Admin Mode:** Add, manage, and moderate book entries.  
+  - **Admin Mode:** Last serach hit and index count.  
 - 🚫 **Bad Word Detection** – Identifies and handles inappropriate inputs.  
 - ✅ **Success Messages** – Confirms when an action is completed.  
 - 🐳 **Flexible Deployment** – Run via **Streamlit directly** or with **Docker**.  
