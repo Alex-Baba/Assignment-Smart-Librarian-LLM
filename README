@@ -1,1 +1,142 @@
-Trebuie sa faci o documentatie aici
+# 📚 Smart Librarian – LLM-Powered Book Assistant
+
+Smart Librarian is an AI-powered application built with **Streamlit** and **ChromaDB**, designed to recommend books, summarize content, and provide an interactive library experience. It offers **user mode** for readers and **admin mode** for debugging the library, with moderation features to handle inappropriate input.  
+
+---
+
+## ✨ Features
+
+- 🔍 **AI Book Recommendations** – Suggests books based on queries.  
+- 📖 **Summaries** – Generates summaries for books in the library.  
+- 🧑‍💻 **Dual Mode** –  
+  - **User Mode:** Search, ask questions, and get suggestions.  
+  - **Admin Mode:** Add, manage, and moderate book entries.  
+- 🚫 **Bad Word Detection** – Identifies and handles inappropriate inputs.  
+- ✅ **Success Messages** – Confirms when an action is completed.  
+- 🐳 **Flexible Deployment** – Run via **Streamlit directly** or with **Docker**.  
+
+---
+
+## ⚙️ Installation & Setup
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/Alex-Baba/Assignment-Smart-Librarian-LLM.git
+cd Assignment-Smart-Librarian-LLM
+```
+
+### 2. Create and Configure `.env` File
+Example `.env` file:
+
+```env
+# OpenAI API Key
+OPENAI_API_KEY=your_openai_api_key_here
+
+# Admin Mode (0 = disabled, 1 = enabled)
+SMARTLIB_ADMIN=0
+```
+
+---
+
+## 🚀 Running the App
+
+### Option 1: Run with Streamlit
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+### Option 2: Run with Docker
+Build the image:
+```bash
+docker build -t smart-librarian .
+```
+
+Run the container:
+```bash
+docker run -p 8501:8501 --env-file .env smart-librarian
+```
+
+Now, open [http://localhost:8501](http://localhost:8501) in your browser.  
+
+---
+
+## 🧭 How it Works (Flow)
+
+**Startup**  
+- Loads config from `.env` / environment (`lib/config.py`).  
+- Ensures Chroma client & collection (`lib/vector.py`).  
+- If `AUTO_RESET=1` and first session: rebuilds index from `data/book_summaries.json`.  
+
+**User prompt**  
+- If moderation flags the prompt and `MODERATION_BLOCK=1`, the app refuses and asks for a clean prompt.  
+- Otherwise, performs vector search (top-K) over summaries.  
+
+**Selection**  
+- If `USE_LLM=1`, the LLM picks the single best recommendation and explains why.  
+- Else, returns the vector top-1.  
+
+**Enhancements (after a recommendation)**  
+- 🎨 Generate image: creates a “cover concept” (several style options).  
+- 🔊 TTS: synthesizes the summary with multiple voice choices.  
+
+**Admin mode (`SMARTLIB_ADMIN=1`)**  
+- Hidden panels show index count and the last search hits (for debugging).  
+
+---
+
+## 🧪 Example Usage
+
+- “Cozy fantasy with found family and tea-shop vibes.”  
+- “Space opera with political intrigue and ecology themes.”  
+- “Whodunnit with sarcastic humor and small-town setting.”  
+
+👉 If you see **“Your message has unsafe language”**, the recommendation is blocked until your next clean prompt.  
+
+---
+
+## 🧠 Data Format for `book_summaries.json`
+
+The indexer supports two shapes:  
+
+### 1. Object map
+```json
+{
+  "Dune": "Summary text...",
+  "The Hobbit": "Summary text..."
+}
+```
+
+### 2. List of objects
+```json
+[
+  {"Title": "Dune", "Summary": "Summary text..."},
+  {"Title": "The Hobbit", "Summary": "Summary text..."}
+]
+```
+
+Each entry becomes one document with metadata `{title, summary}`.  
+
+---
+
+## 🖼️ Screenshots
+
+- **User Mode**  
+  ![User Mode](./images/user_mode.png)
+
+- **Admin Mode**  
+  ![Admin Mode](./images/admin_mode.png)
+
+- **Bad Word Detected**  
+  ![Bad Word](./images/bad_word.png)
+
+- **Success Message**  
+  ![Success](./images/success.png)
+
+
+---
+
+## 📌 Notes
+- Ensure you have a valid **OpenAI API Key** in your `.env`.  
+- ChromaDB will automatically store embeddings locally in the path you define.  
+- Admin mode requires the change to 1 in `.env`.  
