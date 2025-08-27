@@ -1,167 +1,120 @@
 from __future__ import annotations
-import os, shutil
 from pathlib import Path
 from typing import Any, Dict, List
+import json, hashlib, re, os
 
 import chromadb
 from chromadb.utils import embedding_functions
 
-from .data import load_summaries
+from lib.config import AppConfig, CHROMA_OPENAI_API_KEY
 
-ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_CHROMA_DIR = "/tmp/chroma_smart_librarian"
-CHROMA_DIR = os.environ.get("CHROMA_DIR", DEFAULT_CHROMA_DIR)
+# ---- basics ----
+def _slug(s: str) -> str:
+    s = (s or "").strip().lower()
+    return re.sub(r"[^a-z0-9]+", "-", s).strip("-") or "untitled"
 
-def _pick_writable_dir(preferred: str, fallbacks=None) -> str:
-    """
-    Return a writable directory path for Chroma storage.
-    Verifies by creating a temp file. Falls back to /tmp/chroma_smart_librarian.
-    """
-    import tempfile
-    from pathlib import Path
-    fallbacks = fallbacks or ["/tmp/chroma_smart_librarian"]
-    candidates = [preferred] + [d for d in fallbacks if d]
-    for d in candidates:
-        try:
-            os.makedirs(d, exist_ok=True)
-            test = Path(d) / ".write_test"
-            with open(test, "w") as f:
-                f.write("ok")
-            test.unlink(missing_ok=True)
-            return d
-        except Exception:
-            continue
-    # last resort
-    d = str(Path(tempfile.gettempdir()) / "chroma_smart_librarian")
-    os.makedirs(d, exist_ok=True)
-    return d
+def _stable_id(title: str) -> str:
+    return hashlib.md5(title.encode("utf-8")).hexdigest()
 
-BASE_CHROMA_DIR = _pick_writable_dir(CHROMA_DIR)
-ACTIVE_CHROMA_DIR = os.path.join(BASE_CHROMA_DIR, f"run-{os.getpid()}")
+def _load_summaries(p: Path) -> List[Dict[str, str]]:
+    with open(p, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    if isinstance(data, dict):
+        return [{"Title": k, "Summary": v} for k, v in data.items()]
+    out = []
+    for it in data:
+        if isinstance(it, dict):
+            t = it.get("Title") or it.get("title")
+            s = it.get("Summary") or it.get("summary")
+            if t and s:
+                out.append({"Title": t, "Summary": s})
+    return out
 
-def _pick_writable_dir(preferred: str, fallbacks=None) -> str:
-    """
-    Return a writable directory path for Chroma storage.
-    Tries `preferred` then fallbacks (default: ['/tmp/chroma']).
-    """
-    import tempfile
-    from pathlib import Path
-    fallbacks = fallbacks or ["/tmp/chroma"]
-    candidates = [preferred] + [d for d in fallbacks if d]
-    for d in candidates:
-        try:
-            os.makedirs(d, exist_ok=True)
-            test = Path(d) / ".write_test"
-            with open(test, "w") as f:
-                f.write("ok")
-            test.unlink(missing_ok=True)
-            return d
-        except Exception:
-            continue
-    # As a last resort, use system tmp
-    d = str(Path(tempfile.gettempdir()) / "chroma")
-    os.makedirs(d, exist_ok=True)
-    return d
+# ---- chroma 1.x wiring ----
+def _client(cfg: AppConfig) -> chromadb.PersistentClient:
+    cfg.db_dir.mkdir(parents=True, exist_ok=True)
+    # 1.x recommended local client
+    return chromadb.PersistentClient(path=str(cfg.db_dir))
 
-def client():
-    """Create and return a persistent ChromaDB client for vector storage.
-    Ensures the directory is writable; falls back if needed.
-    """
-    writable = BASE_CHROMA_DIR
-    os.makedirs(ACTIVE_CHROMA_DIR, exist_ok=True)
-    try:
-        os.chmod(ACTIVE_CHROMA_DIR, 0o777)
-    except Exception:
-        pass
-    if not getattr(client, "_logged_path", False):
-        try:
-            import sys
-            print(f"[SmartLibrarian] Chroma base: {writable}", file=sys.stderr)
-            print(f"[SmartLibrarian] Chroma active: {ACTIVE_CHROMA_DIR}", file=sys.stderr)
-        except Exception:
-            pass
-        client._logged_path = True
-    return chromadb.PersistentClient(path=ACTIVE_CHROMA_DIR)
+def _embedder(model_name: str):
+    if not CHROMA_OPENAI_API_KEY:
+        raise RuntimeError("OPENAI_API_KEY / CHROMA_OPENAI_API_KEY not set")
+    return embedding_functions.OpenAIEmbeddingFunction(
+        api_key=CHROMA_OPENAI_API_KEY,
+        model_name=model_name,
+    )
 
-def collection(embed_model: str, name: str = "books"):
-    """
-    Get or create a ChromaDB collection for storing book embeddings.
-    Uses OpenAI embedding model and API key from environment.
-    """
-    api_key = os.getenv("CHROMA_OPENAI_API_KEY") or os.getenv("OPENAI_API_KEY")
-    ef = embedding_functions.OpenAIEmbeddingFunction(model_name=embed_model, api_key=api_key)
-    c = client()
-    try:
-        return c.get_collection(name=name, embedding_function=ef)
-    except Exception:
-        return c.create_collection(name=name, embedding_function=ef)
+def _collection(cli: chromadb.PersistentClient, model_name: str):
+    name = f"books_{_slug(model_name)}"
+    # 1.x has get_or_create_collection
+    return cli.get_or_create_collection(name=name, embedding_function=_embedder(model_name))
 
-def index_books(embed_model: str) -> int:
-    """
-    Index all books from the summaries file into the ChromaDB collection.
-    Returns the number of books indexed.
-    """
-    data = load_summaries()
-    col = collection(embed_model)
+# ---- public API ----
+def reset_db(cfg: AppConfig) -> None:
+    # Clear the local store (duckdb+parquet under the dir)
+    for p in cfg.db_dir.glob("*"):
+        if p.is_file():
+            p.unlink(missing_ok=True)
+        else:
+            for q in p.glob("**/*"):
+                try: q.unlink()
+                except: pass
+            try: p.rmdir()
+            except: pass
+
+def index_books(cfg: AppConfig) -> int:
+    cli = _client(cfg)
+    col = _collection(cli, cfg.embed_model)
+    items = _load_summaries(cfg.data_file)
+
     ids, docs, metas = [], [], []
-    for i, (title, summary) in enumerate(data.items()):
-        ids.append(f"id_{i}")
+    for it in items:
+        title = it["Title"].strip()
+        summary = it["Summary"].strip()
+        ids.append(_stable_id(title))
         docs.append(summary)
         metas.append({"title": title, "summary": summary})
+
     if ids:
         col.upsert(ids=ids, documents=docs, metadatas=metas)
     return len(ids)
 
-def ensure_index(embed_model: str) -> int:
-    """
-    Ensure the ChromaDB collection is indexed.
-    If empty, index all books. Returns the count of indexed books.
-    """
-    col = collection(embed_model)
+def ensure_index(cfg: AppConfig) -> int:
+    cli = _client(cfg)
+    col = _collection(cli, cfg.embed_model)
+    count = 0
     try:
-        n = col.count()
+        count = col.count()
     except Exception:
-        n = 0
-    if not n:
-        return index_books(embed_model)
-    return n
+        count = 0
+    if not count:
+        return index_books(cfg)
+    return count
 
-def reset_db() -> None:
-    """Remove the ACTIVE Chroma storage directory to reset the DB."""
-    d = Path(ACTIVE_CHROMA_DIR)
-    if d.exists() and d.is_dir():
-        try:
-            # Make sure contents are writable before deletion
-            for pth in d.rglob("*"):
-                try:
-                    os.chmod(pth, 0o777)
-                except Exception:
-                    pass
-        except Exception:
-            pass
-        shutil.rmtree(d, ignore_errors=True)
-
-def reset_and_rebuild(embed_model: str) -> int:
-    """Reset the DB and rebuild the index from scratch; return count."""
-    reset_db()
-    return index_books(embed_model)
-
-def search_books(query: str, k: int, embed_model: str) -> List[Dict[str, Any]]:
-    """
-    Search for the top-k most relevant books using semantic similarity.
-    Returns a list of dicts with title, summary, document text, and score.
-    """
-    col = collection(embed_model)
-    res = col.query(query_texts=[query], n_results=k, include=["documents", "metadatas", "distances"])
-    hits: List[Dict[str, Any]] = []
-    for i in range(len(res["ids"][0])):
-        meta = res["metadatas"][0][i]
-        doc  = res["documents"][0][i]
-        dist = res.get("distances", [[None]])[0][i]
-        hits.append({
-            "title": meta.get("title", ""),
-            "summary": meta.get("summary", ""),
-            "doc": doc,
-            "score": (1.0 - (dist or 0.0)) if dist is not None else None
+def search_books(query: str, k: int, cfg: AppConfig) -> List[Dict[str, Any]]:
+    cli = _client(cfg)
+    col = _collection(cli, cfg.embed_model)
+    res = col.query(
+        query_texts=[query.strip()],
+        n_results=k,
+        include=["documents", "metadatas", "distances"],
+    )
+    out = []
+    ids = res.get("ids", [[]])[0]
+    docs = res.get("documents", [[]])[0]
+    mds = res.get("metadatas", [[]])[0]
+    dists = res.get("distances", [[]])[0]
+    for i in range(len(ids)):
+        md = mds[i] or {}
+        out.append({
+            "id": ids[i],
+            "title": md.get("title") or "(untitled)",
+            "summary": md.get("summary") or docs[i],
+            "score": dists[i],
         })
-    return hits
+    out.sort(key=lambda r: r["score"])  # lower = closer
+    return out
+
+def reset_and_rebuild(cfg: AppConfig) -> int:
+    reset_db(cfg)
+    return index_books(cfg)

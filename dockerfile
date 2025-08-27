@@ -1,26 +1,28 @@
-# Dockerfile
-
-# Start with the base image
 FROM python:3.11-slim
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
-    libgomp1 && \
-    rm -rf /var/lib/apt/lists/*
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1 \
+    CHROMA_PERSIST_DIR=/app/db_store
 
-# Set the working directory inside the container
 WORKDIR /app
 
-# Copy the requirements file and install Python dependencies
-COPY requirements.txt ./requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
+# System deps (audio + build tools)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential ffmpeg libsndfile1 git && \
+    rm -rf /var/lib/apt/lists/*
 
-# Copy the application code into the container
-COPY . /app
+# Install Python deps first for better caching
+COPY requirements.txt .
+RUN pip install --upgrade pip && pip install -r requirements.txt
 
-# Expose the port Streamlit will run on
+# App code
+COPY . .
+
+# Ensure writable cache & Chroma store
+RUN mkdir -p /app/.cache /app/db_store && chmod -R 777 /app/.cache /app/db_store
+
 EXPOSE 8501
 
-# Define the command to run the application
-CMD ["streamlit", "run", "ui/app_streamlit.py", "--server.port=8501", "--server.address=0.0.0.0"]
+# Launch Streamlit
+CMD ["streamlit","run","ui/app_streamlit.py","--server.port=8501","--server.address=0.0.0.0"]

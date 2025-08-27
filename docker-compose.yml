@@ -9,12 +9,16 @@ services:
       - "8501:8501"
     environment:
       OPENAI_API_KEY: ${OPENAI_API_KEY}
+      CHROMA_OPENAI_API_KEY: ${CHROMA_OPENAI_API_KEY:-${OPENAI_API_KEY}}
       SMARTLIB_ADMIN: ${SMARTLIB_ADMIN:-0}
-      CHROMA_DIR: /app/db_store
+      CHROMA_PERSIST_DIR: /app/db_store
+      PYTHONPATH: /app
     volumes:
+      # Docker-managed volume for Chroma (RW)
       - chroma_data:/app/db_store
+      # Read-only bind for your JSON data
       - ./data:/app/data:ro
     restart: unless-stopped
-   
+
 volumes:
   chroma_data: {}
