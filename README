@@ -136,16 +136,16 @@ Each entry is stored with `{title, summary}` metadata.
 ## 🖼️ Screenshots
 
 - **User Mode**  
-  ![User Mode](./images/user_mode.png)
+  ![User Mode](/images/user_mode.png)
 
 - **Admin Mode**  
-  ![Admin Mode](./images/admin_mode.png)
+  ![Admin Mode](/images/admin_mode.png)
 
 - **Bad Word Detected**  
-  ![Bad Word](./images/bad_word.png)
+  ![Bad Word](/images/bad_word.png)
 
 - **Success Message**  
-  ![Success](./images/success.png)
+  ![Success](/images/success.png)
 
 ---
 
