@@ -1,502 +1,202 @@
 [
-  {
-    "Title":"The Hobbit",
-    "Summary":"Bilbo Baggins is whisked from his quiet life by a band of dwarves and the wizard Gandalf. On a quest to reclaim a lost kingdom, he faces trolls, goblins, spiders, and a dragon. Along the road he discovers courage he never knew he had.\nThemes: friendship; adventure; courage; homecoming",
-    "Themes":null
-  },
-  {
-    "Title":"1984",
-    "Summary":"Winston Smith struggles for truth and individuality under a totalitarian regime that rewrites reality. His secret love affair becomes an act of rebellion. Surveillance and propaganda close in as he searches for freedom of thought.\nThemes: oppression; surveillance; truth vs. lies; individuality",
-    "Themes":null
-  },
-  {
-    "Title":"To Kill a Mockingbird",
-    "Summary":"Young Scout Finch observes her father defend a Black man falsely accused in a segregated Southern town. Through childhood adventures and courtroom drama, she confronts injustice. Compassion becomes her compass in a divided community.\nThemes: justice; empathy; racism; moral growth",
-    "Themes":null
-  },
-  {
-    "Title":"Dune",
-    "Summary":"Paul Atreides is thrust into a desert world where politics, prophecy, and ecology collide. As rival houses fight for control of spice, he learns the ways of the Fremen. Destiny reshapes him\u2014and the future of the empire.\nThemes: power; ecology; destiny; religion; survival",
-    "Themes":null
-  },
-  {
-    "Title":"The Name of the Wind",
-    "Summary":"Kvothe recounts his life\u2014from orphaned street urchin to gifted student at a school of magic. He hunts for the truth behind a legendary tragedy. Music, wit, and obsession guide his rise and missteps.\nThemes: storytelling; identity; knowledge; ambition",
-    "Themes":null
-  },
-  {
-    "Title":"The Girl with the Dragon Tattoo",
-    "Summary":"Journalist Mikael Blomkvist and hacker Lisbeth Salander investigate a decades-old disappearance. Their pursuit uncovers corporate corruption and buried violence. Two uncommon allies learn to trust each other.\nThemes: justice; corruption; trauma; partnership",
-    "Themes":null
-  },
-  {
-    "Title":"The Ocean at the End of the Lane",
-    "Summary":"A man revisits his childhood and a neighbor family with uncanny powers. Memory opens a door to ancient forces and quiet heroism. Wonder and fear mingle in a tale about what we keep and what we forget.\nThemes: memory; innocence; sacrifice; the supernatural",
-    "Themes":null
-  },
-  {
-    "Title":"Neuromancer",
-    "Summary":"Washed-up hacker Case is hired for one last job in a neon-soaked future. He dives through cyberspace with a volatile partner and an AI with its own agenda. Reality blurs as he races against corporate and digital ghosts.\nThemes: technology; consciousness; freedom; alienation",
-    "Themes":null
-  },
-  {
-    "Title":"The Night Circus",
-    "Summary":"Two young magicians are bound to a duel staged within a mysterious, midnight circus. As love blooms, the game\u2019s rules turn dangerous. The performers\u2019 fates entwine beneath tents of wonder and shadow.\nThemes: love; rivalry; destiny; imagination",
-    "Themes":null
-  },
-  {
-    "Title":"The Overstory",
-    "Summary":"Strangers\u2019 lives intersect through their ties to trees and forests. Their choices ripple across decades, confronting exploitation and awe. The natural world becomes both character and cause.\nThemes: nature; interconnectedness; activism; survival",
-    "Themes":null
-  },
-  {
-    "Title":"Pride and Prejudice",
-    "Summary":"Elizabeth Bennet navigates love, manners, and social standing in Regency England. Her wit and independence clash with Mr. Darcy's pride, leading to misunderstandings before love blossoms.",
-    "Themes":"love; class; pride; prejudice; family"
-  },
-  {
-    "Title":"Moby-Dick",
-    "Summary":"Captain Ahab obsessively hunts the white whale that maimed him. Ishmael narrates a voyage across vast oceans, filled with philosophy, danger, and obsession with nature\u2019s mysteries.",
-    "Themes":"obsession; revenge; fate; nature; madness"
-  },
-  {
-    "Title":"The Great Gatsby",
-    "Summary":"Jay Gatsby pursues wealth and glamour to win back Daisy Buchanan. Amid roaring twenties excess, Nick Carraway observes dreams corrode under greed and illusion.",
-    "Themes":"love; wealth; illusion; the American Dream; loss"
-  },
-  {
-    "Title":"Jane Eyre",
-    "Summary":"Orphaned Jane becomes a governess at Thornfield Hall, where she meets the brooding Mr. Rochester. Secrets and trials test her resolve, but she insists on dignity and independence.",
-    "Themes":"love; independence; morality; feminism; faith"
-  },
-  {
-    "Title":"Brave New World",
-    "Summary":"In a future society engineered for stability, individuality is suppressed by pleasure and conformity. John, the 'Savage,' confronts a world where freedom is sacrificed for comfort.",
-    "Themes":"control; individuality; technology; conformity; freedom"
-  },
-  {
-    "Title":"Frankenstein",
-    "Summary":"Victor Frankenstein creates life, but recoils at his monstrous creation. The creature seeks acceptance but finds only rejection, leading to vengeance.",
-    "Themes":"creation; responsibility; isolation; revenge"
-  },
-  {
-    "Title":"Dracula",
-    "Summary":"Jonathan Harker encounters the enigmatic Count Dracula. As Dracula spreads his dark influence, a group of allies battles to stop him.",
-    "Themes":"fear; evil; immortality; courage"
-  },
-  {
-    "Title":"Les Mis\u00e9rables",
-    "Summary":"Jean Valjean seeks redemption while Inspector Javert relentlessly pursues him. Love, sacrifice, and revolution sweep through 19th-century France.",
-    "Themes":"justice; redemption; love; sacrifice; revolution"
-  },
-  {
-    "Title":"Crime and Punishment",
-    "Summary":"Raskolnikov commits murder, believing himself above morality. Guilt and redemption unravel him as he faces the consequences of conscience.",
-    "Themes":"guilt; morality; punishment; redemption"
-  },
-  {
-    "Title":"The Brothers Karamazov",
-    "Summary":"The Karamazov family spirals into conflict over faith, morality, and patricide. Philosophical debates blend with family drama.",
-    "Themes":"faith; morality; family; justice; guilt"
-  },
-  {
-    "Title":"War and Peace",
-    "Summary":"Amid Napoleonic wars, Russian aristocrats grapple with love, destiny, and history\u2019s tide. Pierre and Natasha\u2019s journeys intertwine with battles and ideals.",
-    "Themes":"war; peace; love; destiny; history"
-  },
-  {
-    "Title":"Anna Karenina",
-    "Summary":"Trapped in a loveless marriage, Anna falls for Count Vronsky. Her affair sparks scandal and tragedy in Russian high society.",
-    "Themes":"love; betrayal; society; tragedy; morality"
-  },
-  {
-    "Title":"Wuthering Heights",
-    "Summary":"Catherine and Heathcliff\u2019s love is fierce, destructive, and transcendent. Generational conflict and revenge echo across the moors.",
-    "Themes":"love; revenge; passion; tragedy; family"
-  },
-  {
-    "Title":"The Catcher in the Rye",
-    "Summary":"Holden Caulfield wanders New York, disillusioned with adult hypocrisy and yearning for innocence. His voice captures adolescent angst.",
-    "Themes":"alienation; innocence; identity; rebellion"
-  },
-  {
-    "Title":"The Lord of the Rings",
-    "Summary":"Frodo Baggins carries the One Ring to Mordor to destroy it. Alongside friends and allies, he battles darkness and temptation.",
-    "Themes":"friendship; courage; destiny; good vs. evil"
-  },
-  {
-    "Title":"Harry Potter and the Sorcerer\u2019s Stone",
-    "Summary":"Harry discovers he is a wizard and attends Hogwarts. With friends Ron and Hermione, he faces magical trials and the shadow of Voldemort.",
-    "Themes":"friendship; courage; magic; identity"
-  },
-  {
-    "Title":"The Fellowship of the Ring",
-    "Summary":"The first volume of Tolkien\u2019s epic. Frodo begins his perilous journey to destroy the One Ring, aided by companions of diverse origins.",
-    "Themes":"friendship; courage; sacrifice; destiny"
-  },
-  {
-    "Title":"Great Expectations",
-    "Summary":"Pip\u2019s journey from orphan to gentleman is shaped by mysterious benefactors, love, and social class.",
-    "Themes":"class; ambition; love; identity"
-  },
-  {
-    "Title":"Don Quixote",
-    "Summary":"An aging nobleman imagines himself a knight-errant. With Sancho Panza, he tilts at windmills and redefines heroism.",
-    "Themes":"illusion; heroism; reality; folly"
-  },
-  {
-    "Title":"The Picture of Dorian Gray",
-    "Summary":"Dorian remains young while his portrait bears the scars of sin and age. Vanity and moral decay unravel him.",
-    "Themes":"vanity; morality; corruption; beauty"
-  },
-  {
-    "Title":"Madame Bovary",
-    "Summary":"Emma Bovary seeks romance beyond her provincial life. Her affairs and debts spiral toward tragedy.",
-    "Themes":"desire; disillusionment; society; tragedy"
-  },
-  {
-    "Title":"The Count of Monte Cristo",
-    "Summary":"Edmond Dant\u00e8s is wrongfully imprisoned but escapes to seek revenge with cunning and fortune.",
-    "Themes":"revenge; justice; betrayal; redemption"
-  },
-  {
-    "Title":"Fahrenheit 451",
-    "Summary":"In a world where books are banned, Guy Montag questions conformity and seeks truth through forbidden knowledge.",
-    "Themes":"censorship; knowledge; rebellion; freedom"
-  },
-  {
-    "Title":"The Martian",
-    "Summary":"Astronaut Mark Watney is stranded on Mars. With ingenuity and humor, he fights to survive until rescue.",
-    "Themes":"survival; ingenuity; isolation; hope"
-  },
-  {
-    "Title":"Foundation",
-    "Summary":"Hari Seldon predicts the fall of the Galactic Empire. His plan to preserve knowledge spans centuries of intrigue.",
-    "Themes":"knowledge; power; fate; survival"
-  },
-  {
-    "Title":"Snow Crash",
-    "Summary":"In a hyper-commercialized future, Hiro Protagonist battles a virtual drug threatening minds and society.",
-    "Themes":"technology; language; freedom; chaos"
-  },
-  {
-    "Title":"Ender\u2019s Game",
-    "Summary":"Child prodigy Ender Wiggin trains in a battle school to fight alien invaders, grappling with leadership and morality.",
-    "Themes":"war; morality; leadership; identity"
-  },
-  {
-    "Title":"A Game of Thrones",
-    "Summary":"Noble families vie for power in Westeros, where politics, prophecy, and betrayal shape kingdoms and destinies.",
-    "Themes":"power; betrayal; family; destiny"
-  },
-  {
-    "Title":"The Road",
-    "Summary":"A father and son journey through a post-apocalyptic wasteland, clinging to love and survival.",
-    "Themes":"survival; love; hope; despair"
-  },
-  {
-    "Title":"The Kite Runner",
-    "Summary":"Amir seeks redemption for betraying his childhood friend in war-torn Afghanistan.",
-    "Themes":"friendship; betrayal; redemption; guilt"
-  },
-  {
-    "Title":"Life of Pi",
-    "Summary":"Stranded at sea with a Bengal tiger, Pi Patel battles survival and faith.",
-    "Themes":"survival; faith; imagination; resilience"
-  },
-  {
-    "Title":"The Book Thief",
-    "Summary":"In Nazi Germany, Liesel finds solace in stolen books while Death narrates her story of love and loss.",
-    "Themes":"war; love; loss; books"
-  },
-  {
-    "Title":"The Hunger Games",
-    "Summary":"Katniss Everdeen volunteers for a deadly televised survival game, igniting rebellion.",
-    "Themes":"survival; rebellion; sacrifice; love"
-  },
-  {
-    "Title":"Divergent",
-    "Summary":"Tris Prior discovers she doesn\u2019t fit into her society\u2019s factions. Her divergence marks her as dangerous.",
-    "Themes":"identity; rebellion; love; courage"
-  },
-  {
-    "Title":"Oliver Twist",
-    "Summary":"An orphan navigates poverty, crime, and kindness in Dickens\u2019 tale of Victorian London.",
-    "Themes":"poverty; kindness; crime; society"
-  },
-  {
-    "Title":"David Copperfield",
-    "Summary":"David recounts his growth from childhood hardship to success as a writer.",
-    "Themes":"growth; perseverance; society; identity"
-  },
-  {
-    "Title":"The Scarlet Letter",
-    "Summary":"Hester Prynne endures shame and ostracism for bearing a child out of wedlock in Puritan New England.",
-    "Themes":"sin; guilt; society; redemption"
-  },
-  {
-    "Title":"Uncle Tom\u2019s Cabin",
-    "Summary":"Harriet Beecher Stowe\u2019s anti-slavery novel depicts cruelty and humanity amidst oppression.",
-    "Themes":"slavery; morality; faith; justice"
-  },
-  {
-    "Title":"Gone with the Wind",
-    "Summary":"Scarlett O\u2019Hara survives war and upheaval in the American South with resilience and desire.",
-    "Themes":"war; survival; love; society"
-  },
-  {
-    "Title":"The Left Hand of Darkness",
-    "Summary":"Genly Ai visits a planet with ambisexual inhabitants, confronting culture, gender, and trust.",
-    "Themes":"gender; trust; politics; survival"
-  },
-  {
-    "Title":"Hyperion",
-    "Summary":"Pilgrims tell interconnected tales while journeying to confront the Shrike, a mysterious entity.",
-    "Themes":"destiny; faith; storytelling; tragedy"
-  },
-  {
-    "Title":"Do Androids Dream of Electric Sheep?",
-    "Summary":"Rick Deckard hunts rogue androids in a post-apocalyptic world, questioning humanity itself.",
-    "Themes":"humanity; technology; morality; survival"
-  },
-  {
-    "Title":"The Time Machine",
-    "Summary":"A traveler journeys to the far future, witnessing humanity\u2019s evolution and decline.",
-    "Themes":"time; evolution; society; fate"
-  },
-  {
-    "Title":"20,000 Leagues Under the Sea",
-    "Summary":"Captain Nemo guides the Nautilus beneath the oceans, exploring wonders and mysteries.",
-    "Themes":"exploration; technology; freedom; mystery"
-  },
-  {
-    "Title":"The Silmarillion",
-    "Summary":"Tolkien\u2019s mythic history of Middle-earth recounts creation, heroes, and the struggle of light and dark.",
-    "Themes":"myth; creation; destiny; good vs. evil"
-  },
-  {
-    "Title":"Mistborn: The Final Empire",
-    "Summary":"Vin discovers her power among rebels fighting a thousand-year-old tyrant.",
-    "Themes":"rebellion; power; destiny; courage"
-  },
-  {
-    "Title":"Elantris",
-    "Summary":"A cursed city hides fallen gods. One princess uncovers secrets of faith and survival.",
-    "Themes":"faith; survival; identity; politics"
-  },
-  {
-    "Title":"The Way of Kings",
-    "Summary":"In Roshar, storms shape culture and destiny. Kaladin, Shallan, and Dalinar confront power and prophecy.",
-    "Themes":"power; prophecy; leadership; survival"
-  },
-  {
-    "Title":"The Lion, the Witch and the Wardrobe",
-    "Summary":"Children enter Narnia through a wardrobe, joining Aslan against the White Witch.",
-    "Themes":"faith; courage; good vs. evil; sacrifice"
-  },
-  {
-    "Title":"The Alchemist",
-    "Summary":"Santiago journeys to find treasure, discovering wisdom and destiny along the way.",
-    "Themes":"destiny; wisdom; faith; self-discovery"
-  },
-  {
-    "Title":"A Thousand Splendid Suns",
-    "Summary":"Two Afghan women\u2019s lives intertwine under oppression and war, forging resilience and love.",
-    "Themes":"resilience; love; oppression; survival"
-  },
-  {
-    "Title":"American Gods",
-    "Summary":"Shadow Moon enters a battle between old gods and new in modern America.",
-    "Themes":"myth; faith; identity; power"
-  },
-  {
-    "Title":"Never Let Me Go",
-    "Summary":"Children at a boarding school discover the haunting truth of their existence.",
-    "Themes":"identity; mortality; love; loss"
-  },
-  {
-    "Title":"The Shadow of the Wind",
-    "Summary":"A boy in post-war Barcelona discovers a mysterious book that changes his life.",
-    "Themes":"mystery; love; destiny; books"
-  },
-  {
-    "Title":"Cloud Atlas",
-    "Summary":"Interconnected stories across centuries reveal humanity\u2019s struggles and rebirths.",
-    "Themes":"interconnection; destiny; survival; power"
-  },
-  {
-    "Title":"The Girl on the Train",
-    "Summary":"A troubled woman becomes entangled in a missing persons case through obsession.",
-    "Themes":"obsession; mystery; truth; trauma"
-  },
-  {
-    "Title":"Gone Girl",
-    "Summary":"A husband becomes the suspect when his wife disappears, secrets unraveling.",
-    "Themes":"marriage; deception; truth; betrayal"
-  },
-  {
-    "Title":"The Da Vinci Code",
-    "Summary":"A symbologist races through Europe unraveling codes tied to ancient mysteries.",
-    "Themes":"mystery; religion; conspiracy; truth"
-  },
-  {
-    "Title":"Angels & Demons",
-    "Summary":"Robert Langdon confronts a secret society threatening Vatican City.",
-    "Themes":"faith; conspiracy; science; power"
-  },
-  {
-    "Title":"Beloved",
-    "Summary":"Set after the American Civil War, a woman is haunted by the ghost of her dead child and the trauma of slavery.",
-    "Themes":"slavery; trauma; motherhood; memory"
-  },
-  {
-    "Title":"Their Eyes Were Watching God",
-    "Summary":"Janie Crawford recounts her search for identity and love through three marriages in the early 20th-century South.",
-    "Themes":"identity; love; independence; society"
-  },
-  {
-    "Title":"Things Fall Apart",
-    "Summary":"Okonkwo struggles to uphold tradition as colonial forces disrupt Igbo society.",
-    "Themes":"tradition; colonialism; identity; change"
-  },
-  {
-    "Title":"One Hundred Years of Solitude",
-    "Summary":"The Buend\u00eda family saga unfolds in the magical town of Macondo, blending myth and reality.",
-    "Themes":"family; destiny; magic; solitude"
-  },
-  {
-    "Title":"Love in the Time of Cholera",
-    "Summary":"Florentino waits decades to reunite with Fermina in a meditation on love and time.",
-    "Themes":"love; time; destiny; perseverance"
-  },
-  {
-    "Title":"The Handmaid\u2019s Tale",
-    "Summary":"Offred narrates life under a theocratic regime where women are oppressed and reduced to roles.",
-    "Themes":"oppression; freedom; gender; resistance"
-  },
-  {
-    "Title":"Oryx and Crake",
-    "Summary":"In a dystopian future, genetic engineering reshapes humanity and nature in catastrophic ways.",
-    "Themes":"science; morality; dystopia; survival"
-  },
-  {
-    "Title":"The Testaments",
-    "Summary":"Sequel to The Handmaid\u2019s Tale, offering perspectives from within and outside Gilead.",
-    "Themes":"oppression; freedom; survival; rebellion"
-  },
-  {
-    "Title":"White Teeth",
-    "Summary":"Intergenerational immigrant families in London grapple with identity, history, and belonging.",
-    "Themes":"identity; immigration; history; family"
-  },
-  {
-    "Title":"Midnight\u2019s Children",
-    "Summary":"Born at the stroke of India\u2019s independence, Saleem Sinai\u2019s life mirrors the nation\u2019s turbulent history.",
-    "Themes":"identity; history; destiny; nation"
-  },
-  {
-    "Title":"The Last Wish",
-    "Summary":"A collection of interwoven stories following Geralt of Rivia, a monster hunter navigating morality, magic, and destiny in a dark fantasy world.",
-    "Themes":"destiny; morality; magic; survival"
-  },
-  {
-    "Title":"The Old Man and the Sea",
-    "Summary":"An aging fisherman battles a giant marlin, testing his endurance and spirit.",
-    "Themes":"struggle; endurance; nature; pride"
-  },
-  {
-    "Title":"Of Mice and Men",
-    "Summary":"Two migrant workers chase dreams of stability during the Great Depression, but fate intervenes.",
-    "Themes":"friendship; dreams; fate; hardship"
-  },
-  {
-    "Title":"The Grapes of Wrath",
-    "Summary":"The Joad family migrates west during the Dust Bowl, facing injustice and resilience.",
-    "Themes":"poverty; resilience; justice; family"
-  },
-  {
-    "Title":"A Tale of Two Cities",
-    "Summary":"Set during the French Revolution, love and sacrifice play out amidst chaos and vengeance.",
-    "Themes":"sacrifice; revolution; love; justice"
-  },
-  {
-    "Title":"Heart of Darkness",
-    "Summary":"Marlow journeys into the Congo, uncovering the darkness of colonialism and human nature.",
-    "Themes":"colonialism; darkness; morality; power"
-  },
-  {
-    "Title":"Brave New World Revisited",
-    "Summary":"A non-fiction follow-up where Huxley reflects on his dystopian vision and its growing relevance.",
-    "Themes":"society; control; technology; freedom"
-  },
-  {
-    "Title":"The Moon is a Harsh Mistress",
-    "Summary":"Colonists on the Moon rebel against Earth\u2019s rule with the help of a self-aware computer.",
-    "Themes":"rebellion; freedom; technology; politics"
-  },
-  {
-    "Title":"Childhood\u2019s End",
-    "Summary":"Humanity evolves under the guidance of mysterious alien Overlords, facing transcendence.",
-    "Themes":"evolution; transcendence; alien contact; destiny"
-  },
-  {
-    "Title":"Contact",
-    "Summary":"A scientist discovers extraterrestrial signals, sparking a journey across science and faith.",
-    "Themes":"faith; science; discovery; humanity"
-  },
-  {
-    "Title":"The Andromeda Strain",
-    "Summary":"Scientists race to contain a deadly extraterrestrial microorganism threatening Earth.",
-    "Themes":"science; survival; crisis; technology"
-  },
-  {
-    "Title":"The Once and Future King",
-    "Summary":"A retelling of Arthurian legend, exploring kingship, love, and destiny.",
-    "Themes":"myth; leadership; love; destiny"
-  },
-  {
-    "Title":"Jonathan Strange & Mr Norrell",
-    "Summary":"Two magicians revive English magic during the Napoleonic Wars, with rivalry and mystery.",
-    "Themes":"magic; rivalry; history; destiny"
-  },
-  {
-    "Title":"Good Omens",
-    "Summary":"An angel and demon team up to prevent the apocalypse with humor and heart.",
-    "Themes":"apocalypse; friendship; fate; humor"
-  },
-  {
-    "Title":"Eragon",
-    "Summary":"A farm boy discovers a dragon egg, beginning a quest of magic, destiny, and rebellion.",
-    "Themes":"destiny; rebellion; friendship; magic"
-  },
-  {
-    "Title":"The Golden Compass",
-    "Summary":"Lyra journeys across parallel worlds, battling power and seeking truth.",
-    "Themes":"freedom; destiny; childhood; authority"
-  },
-  {
-    "Title":"The Lovely Bones",
-    "Summary":"A murdered girl narrates from the afterlife, watching her family cope with grief and justice.",
-    "Themes":"loss; grief; family; healing"
-  },
-  {
-    "Title":"The Secret Life of Bees",
-    "Summary":"In the 1960s South, a girl finds solace and truth with three beekeeping sisters.",
-    "Themes":"family; love; identity; race"
-  },
-  {
-    "Title":"The Help",
-    "Summary":"In 1960s Mississippi, Black maids and white women confront prejudice and courage through secret writing.",
-    "Themes":"racism; courage; identity; justice"
-  },
-  {
-    "Title":"Room",
-    "Summary":"A boy raised in captivity with his mother discovers the outside world for the first time.",
-    "Themes":"freedom; survival; love; trauma"
-  },
-  {
-    "Title":"The Goldfinch",
-    "Summary":"After a tragedy, a boy clings to a stolen painting as he navigates loss, art, and identity.",
-    "Themes":"loss; art; identity; resilience"
-  }
+    {
+        "Title": "The Witcher: The Last Wish",
+        "Summary": "Geralt of Rivia, a professional monster hunter, roams a world where humans and beasts share the same capacity for cruelty. In these interlinked stories, he faces cursed princesses, duplicitous rulers, and dangerous creatures. His neutrality is constantly challenged by politics, magic, and morality. Through encounters with Yennefer the sorceress and Dandelion the bard, Geralt’s life grows more entangled with destiny. Sapkowski mixes dark folklore with wit, philosophy, and moral ambiguity. Themes of prejudice, fate, and the human condition dominate. This collection builds the foundation for the Witcher saga, showing that monsters wear many faces."
+    },
+    {
+        "Title": "1984",
+        "Summary": "Orwell’s dystopia depicts a totalitarian regime where truth is rewritten and freedom erased. Winston Smith dares to rebel through love and thought, defying Big Brother. The Party controls not only behavior but also memory and language, reducing thought itself to obedience. Winston’s fragile resistance with Julia collapses under betrayal and torture. Themes of surveillance, propaganda, and psychological control dominate. The novel warns of authoritarianism’s power to extinguish individuality. Its chilling relevance endures as a timeless cautionary tale."
+    },
+    {
+        "Title": "The Hobbit",
+        "Summary": "Bilbo Baggins, a timid hobbit, joins Gandalf and a band of dwarves on a quest to reclaim their mountain home. Along the way, he outsmarts trolls, escapes goblins, and faces giant spiders. Bilbo discovers hidden reserves of courage and cunning, especially when confronting Smaug the dragon. His discovery of the One Ring foreshadows darker tales to come. Tolkien blends humor, peril, and vivid landscapes into an adventure of growth and friendship. Themes of bravery, self-discovery, and unlikely heroism shine throughout. It remains a beloved prelude to The Lord of the Rings."
+    },
+    {
+        "Title": "Pride and Prejudice",
+        "Summary": "Elizabeth Bennet, sharp-witted and independent, spars with the proud Mr. Darcy in a tale of love and misjudgment. Their prejudices mask hidden depths of character revealed through trials. Austen critiques social class and gender roles in Regency England with irony and charm. Elizabeth’s independence and intelligence make her one of literature’s most enduring heroines. Darcy’s transformation underscores the power of humility and growth. Themes of pride, misunderstanding, and transformation dominate. The novel endures as a timeless romantic and social satire."
+    },
+    {
+        "Title": "To Kill a Mockingbird",
+        "Summary": "Seen through the eyes of Scout Finch, this novel explores justice and morality in the racially divided South. Her father, Atticus Finch, defends Tom Robinson, a black man accused of rape. Scout and Jem learn painful lessons about fairness, prejudice, and courage. Boo Radley, once feared, emerges as a figure of empathy and protection. Lee blends innocence with the harsh truths of inequality. Themes of compassion, morality, and childhood innocence prevail. It remains a cornerstone of American literature on conscience and justice."
+    },
+    {
+        "Title": "The Great Gatsby",
+        "Summary": "Nick Carraway narrates the tragic pursuit of love and wealth by Jay Gatsby. Gatsby’s obsession with Daisy Buchanan drives him to recreate the past through opulence. Beneath the glamour lies corruption and emptiness, exposing the decay of the American Dream. The novel critiques excess, illusion, and the careless elite. Gatsby’s dream ends in betrayal and death, contrasting hope with disillusionment. Themes of longing, illusion, and morality resonate strongly. Fitzgerald captures both the brilliance and the rot of the Jazz Age."
+    },
+    {
+        "Title": "Moby-Dick",
+        "Summary": "Captain Ahab’s relentless hunt for the white whale consumes him and his crew. Ishmael, the narrator, provides philosophical reflections on obsession, nature, and humanity. The voyage aboard the Pequod becomes an allegory of vengeance and fate. Ahab’s defiance against the whale mirrors mankind’s struggle against nature’s indifference. Rich descriptions of whaling and symbolism deepen the tale. Themes of madness, destiny, and the ocean’s mystery prevail. Melville’s epic endures as both adventure and meditation."
+    },
+    {
+        "Title": "War and Peace",
+        "Summary": "Tolstoy’s epic spans love, loss, and destiny during Napoleon’s invasion of Russia. The intertwined stories of aristocratic families explore war, philosophy, and the search for meaning. Pierre seeks purpose, Natasha grows through heartbreak, and Andrei faces existential doubt. The novel blends battlefield realism with intimate portraits of life and love. Themes of history, fate, and personal growth dominate. Tolstoy reflects on free will versus inevitability through sweeping narrative. It remains a monumental achievement in world literature."
+    },
+    {
+        "Title": "Crime and Punishment",
+        "Summary": "Raskolnikov, a poor student, murders a pawnbroker and wrestles with guilt and justification. His philosophy of superiority clashes with his conscience. The investigation and his relationship with Sonia drive his journey toward redemption. Dostoevsky delves into morality, psychology, and the nature of crime. The tension between justice and compassion permeates the story. Themes of alienation, poverty, and spirituality resonate deeply. It endures as a profound psychological and moral novel."
+    },
+    {
+        "Title": "Don Quixote",
+        "Summary": "An aging nobleman, inspired by chivalric tales, becomes Don Quixote, self-proclaimed knight-errant. With Sancho Panza, his loyal squire, he sets out to revive honor and justice. Quixote’s delusions lead to comical and tragic encounters, like tilting at windmills. The novel blurs reality and illusion, questioning ideals versus practicality. Cervantes satirizes romance, heroism, and human folly. Themes of imagination, madness, and idealism dominate. It stands as one of the first great modern novels."
+    },
+    {
+        "Title": "Jane Eyre",
+        "Summary": "Charlotte Brontë’s classic follows Jane, an orphan who endures hardship and mistreatment before finding work as a governess at Thornfield Hall. There, she falls in love with the enigmatic Mr. Rochester, whose dark secret threatens their happiness. Jane’s strong moral compass leads her to leave when his deception is revealed, but her resilience and independence guide her toward reconciliation and love. The novel critiques gender inequality and class prejudice, while also celebrating inner strength. Themes of morality, passion, and self-respect run throughout the story. Jane’s journey is one of self-discovery and empowerment. It endures as a pioneering feminist work and timeless romance."
+    },
+    {
+        "Title": "Wuthering Heights",
+        "Summary": "Emily Brontë’s gothic masterpiece tells the story of the intense, destructive love between Heathcliff and Catherine Earnshaw. Set on the Yorkshire moors, the novel explores obsession, revenge, and the corrosive effects of bitterness. Heathcliff’s torment after Catherine’s marriage to another man leads to a cycle of cruelty that spans generations. The harsh landscape mirrors the characters’ turbulent emotions, creating an atmosphere of doom and passion. Themes of love, class, vengeance, and the supernatural permeate the tale. It challenges the boundaries of romance and morality. Its haunting power continues to captivate readers and inspire countless adaptations."
+    },
+    {
+        "Title": "The Catcher in the Rye",
+        "Summary": "J.D. Salinger’s coming-of-age classic follows Holden Caulfield, a disaffected teenager wandering New York City after being expelled from school. Holden rails against the ‘phoniness’ of the adult world, yet longs for authenticity and connection. His protective feelings for his younger sister Phoebe reveal his vulnerability and yearning for innocence. The narrative captures adolescent alienation, rebellion, and confusion with raw honesty. Themes of identity, depression, and the painful transition into adulthood dominate the story. Holden’s voice—cynical yet tender—remains one of the most distinctive in American literature. The novel endures as a touchstone for youth searching for meaning."
+    },
+    {
+        "Title": "The Lord of the Rings",
+        "Summary": "J.R.R. Tolkien’s monumental epic chronicles the quest to destroy the One Ring and defeat the Dark Lord Sauron. Frodo Baggins, accompanied by the Fellowship, journeys across Middle-earth facing peril and temptation. The saga weaves together themes of friendship, sacrifice, and the eternal struggle between good and evil. Rich in languages, cultures, and myth, Tolkien’s world-building remains unparalleled. The story explores power’s corrupting influence and the resilience of the humble. From the Shire to Mordor, the narrative encompasses grand battles and quiet acts of courage. It stands as the cornerstone of modern fantasy literature."
+    },
+    {
+        "Title": "Dracula",
+        "Summary": "Bram Stoker’s gothic horror introduces Count Dracula, a Transylvanian vampire who seeks to spread his curse in England. Told through letters and diaries, the story follows Jonathan Harker, Mina Murray, Van Helsing, and others as they battle his dark influence. The novel explores Victorian fears of sexuality, disease, and the unknown. Dracula himself embodies both allure and terror, blurring lines between desire and dread. Themes of science versus superstition and modernity versus tradition permeate the tale. It defined much of modern vampire mythology and continues to inspire horror fiction. Its chilling atmosphere remains unmatched in gothic literature."
+    },
+    {
+        "Title": "Frankenstein",
+        "Summary": "Mary Shelley’s novel tells of Victor Frankenstein, a scientist who creates life only to recoil from his monstrous creation. The Creature, intelligent yet rejected, seeks love but is met only with fear and cruelty. His despair turns to vengeance, leading to tragedy for both creator and creation. The novel raises questions about ambition, responsibility, and the ethics of science. It is both a gothic horror and a profound philosophical work. Themes of alienation, hubris, and the pursuit of knowledge dominate the narrative. It remains one of the earliest and most influential works of science fiction."
+    },
+    {
+        "Title": "Dune",
+        "Summary": "Frank Herbert’s science fiction masterpiece tells the story of Paul Atreides, heir to House Atreides, as his family takes control of the desert planet Arrakis. The planet is the sole source of spice, the universe’s most valuable resource, making it the center of political intrigue. Betrayal forces Paul into exile, where he aligns with the native Fremen and embraces a destiny larger than himself. Themes of prophecy, ecology, and the dangers of messianic power resonate deeply. Herbert’s world-building is dense and immersive, combining politics, religion, and survival. Paul’s transformation into a figure of legend comes at a cost to himself and his followers. Dune remains a towering work of speculative fiction."
+    },
+    {
+        "Title": "Brave New World",
+        "Summary": "Aldous Huxley’s dystopia envisions a future where society is engineered for stability and pleasure. Citizens are conditioned from birth, stratified into castes, and kept docile with the drug soma. Individuality and emotion are sacrificed for collective efficiency. The arrival of John, a ‘Savage’ raised outside the system, reveals the emptiness beneath manufactured happiness. The novel critiques consumerism, conformity, and technological control. Themes of freedom, identity, and the cost of progress dominate. It stands as both prophecy and warning about the perils of engineered utopias."
+    },
+    {
+        "Title": "Fahrenheit 451",
+        "Summary": "Ray Bradbury’s novel imagines a society where books are banned and firemen burn them. Guy Montag, once a loyal fireman, begins to question his role after encounters with a free-spirited young woman. As he secretly reads forbidden books, his worldview expands and he longs for meaning. The government’s suppression of knowledge highlights the dangers of censorship and conformity. Montag’s journey from enforcer to rebel underscores the power of literature to transform. Themes of individuality, truth, and resistance dominate. It endures as a passionate defense of intellectual freedom."
+    },
+    {
+        "Title": "The Alchemist",
+        "Summary": "Paulo Coelho’s allegorical tale follows Santiago, a shepherd who dreams of hidden treasure. His journey across deserts and foreign lands becomes a search for personal destiny. Guided by omens and encounters with wise mentors, Santiago learns the value of following one’s heart. The story blends spirituality, mysticism, and philosophy. Themes of perseverance, fate, and the interconnectedness of all things dominate. It inspires readers to pursue their own ‘Personal Legends.’ Its simple yet profound prose has made it an international phenomenon."
+    },
+    {
+        "Title": "The Brothers Karamazov",
+        "Summary": "Fyodor Dostoevsky’s philosophical novel follows the turbulent lives of the Karamazov brothers—Dmitri, Ivan, and Alyosha—each embodying different aspects of human nature. Their father, a corrupt and abusive man, becomes the center of a conflict that ends in murder. Dmitri, passionate and impulsive, is accused of the crime, while Ivan struggles with faith and reason, and Alyosha represents spiritual purity. The novel explores questions of morality, free will, and the existence of God. Through courtroom drama and deep dialogue, Dostoevsky dissects justice and redemption. Themes of guilt, faith, and the human soul dominate. It remains a profound inquiry into the essence of belief and morality."
+    },
+    {
+        "Title": "Les Misérables",
+        "Summary": "Victor Hugo’s sweeping epic tells of Jean Valjean, an ex-convict seeking redemption, and Inspector Javert, who relentlessly pursues him. Set against the backdrop of 19th-century France, the story intertwines personal struggles with social upheaval. Valjean’s adoption of the orphaned Cosette contrasts with Javert’s rigid view of justice. The novel explores poverty, revolution, love, and sacrifice on a grand scale. Themes of mercy, forgiveness, and the fight against injustice permeate the narrative. Through its cast of vivid characters, Hugo portrays both despair and hope. It endures as one of literature’s greatest testaments to human resilience."
+    },
+    {
+        "Title": "Anna Karenina",
+        "Summary": "Leo Tolstoy’s tragic romance follows Anna, a married woman who enters a passionate affair with Count Vronsky. Her pursuit of love clashes with the constraints of society, leading to scandal and despair. Parallel to her story is that of Levin, who seeks meaning through family, work, and spirituality. Tolstoy contrasts passion’s destructive force with the grounding power of everyday life. Themes of love, fidelity, morality, and society dominate the novel. Anna’s downfall reflects the harsh judgments and rigid roles of her time. It remains one of the most celebrated explorations of the human heart."
+    },
+    {
+        "Title": "A Tale of Two Cities",
+        "Summary": "Charles Dickens’ historical novel unfolds during the French Revolution, contrasting life in London and Paris. The story follows Charles Darnay, a French nobleman, and Sydney Carton, a disillusioned English lawyer. Their fates intertwine through love for Lucie Manette. Carton’s ultimate sacrifice—giving his life for Darnay—underscores themes of redemption and selflessness. Dickens explores violence, injustice, and transformation amid social upheaval. The famous opening line, ‘It was the best of times, it was the worst of times,’ captures the novel’s dualities. It remains a powerful meditation on sacrifice, justice, and love."
+    },
+    {
+        "Title": "One Hundred Years of Solitude",
+        "Summary": "Gabriel García Márquez’s landmark work of magical realism traces the rise and fall of the Buendía family in the mythical town of Macondo. Generations of love, loss, and repetition create a cyclical narrative of human folly and hope. The blending of fantasy and reality mirrors Latin America’s history of conflict and resilience. Characters face fate and solitude as history repeats itself across decades. Themes of destiny, time, and memory dominate. Márquez’s lyrical prose captures both the personal and the political. The novel remains a cornerstone of world literature and magical realism."
+    },
+    {
+        "Title": "Beloved",
+        "Summary": "Toni Morrison’s haunting novel follows Sethe, a formerly enslaved woman, who is haunted by the ghost of her child. Sethe’s past trauma collides with her present as she struggles to raise her family. The novel explores the scars of slavery and the enduring power of memory. Beloved, both ghost and symbol, forces Sethe to confront the pain she tried to bury. Themes of motherhood, identity, and trauma permeate the narrative. Morrison’s poetic prose weaves history with myth, grief with resilience. It stands as a powerful testament to the legacy of slavery and the strength of survival."
+    },
+    {
+        "Title": "The Kite Runner",
+        "Summary": "Khaled Hosseini’s debut novel tells of Amir, a privileged boy in Kabul, and Hassan, his loyal friend from a lower class. A moment of betrayal during their childhood haunts Amir into adulthood. Years later, amid Afghanistan’s turmoil, Amir seeks redemption. The novel explores friendship, guilt, and forgiveness against a backdrop of political upheaval. Hosseini portrays Afghanistan’s beauty and suffering with tenderness. Themes of loyalty, betrayal, and atonement dominate the story. It remains a deeply moving tale of redemption and love."
+    },
+    {
+        "Title": "Life of Pi",
+        "Summary": "Yann Martel’s novel tells of Pi Patel, a boy stranded on a lifeboat with a Bengal tiger named Richard Parker. As days stretch into months, Pi battles hunger, storms, and the constant threat of the tiger. His faith, imagination, and will to survive become his greatest tools. The novel explores spirituality, storytelling, and resilience in the face of despair. The blurred line between truth and imagination challenges readers to consider the nature of belief. Themes of faith, survival, and the human spirit dominate. It endures as both adventure and allegory."
+    },
+    {
+        "Title": "The Road",
+        "Summary": "Cormac McCarthy’s bleak novel follows a father and son journeying through a post-apocalyptic wasteland. They face hunger, cold, and the constant threat of violence. The father’s devotion to his child sustains them in the darkest times. Sparse prose reflects the desolation of their world. Themes of love, survival, and hope amid despair dominate. Their bond becomes a light in overwhelming darkness. It stands as a modern classic of endurance and love."
+    },
+    {
+        "Title": "The Handmaid’s Tale",
+        "Summary": "Margaret Atwood’s dystopian tale is set in Gilead, a theocratic regime where women are stripped of rights. Offred, a Handmaid, is forced to bear children for powerful men. Her narration reveals both defiance and despair as she clings to memories of freedom. The story critiques patriarchy, religious extremism, and the erosion of autonomy. Themes of resistance, identity, and survival permeate the narrative. Atwood’s vision is chillingly plausible, blending speculative fiction with sharp social commentary. It endures as one of the most influential feminist dystopias."
+    },
+    {
+        "Title": "The Picture of Dorian Gray",
+        "Summary": "Oscar Wilde’s novel tells of Dorian Gray, a handsome young man who wishes his portrait would age instead of him. As he indulges in a life of vanity, excess, and moral corruption, the painting reflects his sins while he remains outwardly youthful. Guided by the hedonistic Lord Henry, Dorian spirals deeper into decadence. The story critiques aestheticism, superficial beauty, and moral decay. Themes of temptation, corruption, and the soul’s cost dominate the narrative. The novel’s gothic atmosphere heightens its exploration of sin and conscience. It remains a cautionary tale about the dangers of unchecked desire."
+    },
+    {
+        "Title": "Gone with the Wind",
+        "Summary": "Margaret Mitchell’s sweeping saga follows Scarlett O’Hara, a strong-willed Southern belle during the American Civil War and Reconstruction. Scarlett’s determination to survive contrasts with her turbulent love for Rhett Butler. As war devastates her world, she adapts with ruthless pragmatism. The novel portrays the collapse of the Old South and the resilience of its people. Themes of love, loss, and survival dominate. Scarlett’s flawed, complex character makes her unforgettable. It remains one of the most iconic historical romances ever written."
+    },
+    {
+        "Title": "The Shining",
+        "Summary": "Stephen King’s horror classic follows Jack Torrance, a struggling writer who becomes caretaker of the haunted Overlook Hotel. With his wife Wendy and son Danny, who possesses psychic abilities, Jack hopes for a fresh start. Instead, the hotel’s malevolent forces drive him into madness. Danny’s ‘shining’ reveals the horrors lurking in the building’s history. Themes of isolation, addiction, and family breakdown dominate. King blends psychological terror with supernatural menace. It stands as one of the most chilling novels in modern horror."
+    },
+    {
+        "Title": "It",
+        "Summary": "Stephen King’s epic horror tale follows a group of childhood friends in Derry, Maine, who confront a shape-shifting monster that preys on fear. Known as Pennywise the Clown, the creature returns every 27 years to feed. The children, calling themselves the Losers’ Club, vow to stop it. Decades later, they reunite as adults to face the terror again. Themes of memory, trauma, and the endurance of friendship dominate. King interweaves coming-of-age nostalgia with pure horror. It remains a definitive work of both horror and childhood storytelling."
+    },
+    {
+        "Title": "American Gods",
+        "Summary": "Neil Gaiman’s fantasy follows Shadow Moon, an ex-con who becomes entangled in a conflict between the old gods of mythology and the new gods of technology and media. Guided by the enigmatic Mr. Wednesday, Shadow embarks on a road trip across America. The journey blends folklore, myth, and Americana into a rich tapestry. Shadow grapples with questions of belief, identity, and destiny. Themes of faith, cultural change, and survival dominate the novel. Gaiman’s lyrical prose creates a surreal, haunting atmosphere. It endures as one of the most inventive modern fantasies."
+    },
+    {
+        "Title": "Mistborn: The Final Empire",
+        "Summary": "Brandon Sanderson’s fantasy introduces a world ruled by the immortal Lord Ruler, where ash falls from the sky and mist hides at night. Vin, a street thief, discovers she possesses allomancy—the ability to burn metals for power. She joins a band of rebels determined to overthrow the empire. The novel blends heist intrigue with epic fantasy. Themes of trust, leadership, and hope dominate. Sanderson’s unique magic system is both intricate and thrilling. It stands as the beginning of a beloved fantasy series."
+    },
+    {
+        "Title": "The Name of the Wind",
+        "Summary": "Patrick Rothfuss’s lyrical fantasy tells the story of Kvothe, a legendary figure recounting his life. From a gifted child in a troupe of performers to a destitute orphan and then a student at a magical university, Kvothe’s journey is filled with hardship and wonder. He seeks knowledge about the mysterious beings who killed his family. Themes of storytelling, identity, and obsession dominate. Rothfuss’s prose elevates the narrative into mythic territory. The novel blends adventure, romance, and music. It remains one of the most acclaimed modern fantasy works."
+    },
+    {
+        "Title": "A Game of Thrones",
+        "Summary": "George R.R. Martin’s fantasy epic begins the saga of the Seven Kingdoms, where noble families vie for the Iron Throne. Intrigue, betrayal, and shifting alliances define the story. The Stark family’s honor collides with the ruthless ambition of others. Dragons, prophecy, and looming supernatural threats deepen the stakes. Themes of loyalty, power, and survival dominate the tale. Martin’s unflinching realism redefined modern fantasy. It launched one of the most influential series in the genre."
+    },
+    {
+        "Title": "Eragon",
+        "Summary": "Christopher Paolini’s fantasy follows Eragon, a farm boy who discovers a dragon egg. When the dragon hatches, he is thrust into a world of magic, rebellion, and destiny. Guided by Brom, he trains to become a Dragon Rider. The empire’s tyranny forces him to fight for freedom. Themes of courage, mentorship, and responsibility dominate. The bond between Eragon and his dragon, Saphira, is central to the tale. It became a modern favorite among young fantasy readers."
+    },
+    {
+        "Title": "The Hunger Games",
+        "Summary": "Suzanne Collins’ dystopian thriller follows Katniss Everdeen, a girl forced to fight for survival in a televised death match. Her act of defiance sparks a rebellion against the Capitol. Themes of sacrifice, resistance, and media manipulation dominate the series’ first entry. Katniss’s strength and vulnerability make her an enduring heroine. The novel critiques authoritarianism and spectacle. Its tension and action captivated readers worldwide. It remains a landmark in young adult dystopian fiction."
+    },
+    {
+        "Title": "Divergent",
+        "Summary": "Veronica Roth’s dystopian novel is set in a society divided into factions based on virtues. Beatrice ‘Tris’ Prior discovers she is Divergent, not fitting neatly into any one group. Her choice to join the Dauntless faction tests her courage and identity. Romance with her instructor, Four, deepens her struggle for belonging. As political tensions rise, Tris uncovers a conspiracy that threatens the entire system. Themes of individuality, bravery, and rebellion dominate. It launched one of the most popular young adult dystopian trilogies."
+    },
+    {
+        "Title": "The Maze Runner",
+        "Summary": "James Dashner’s thriller follows Thomas, who awakens with no memory in a deadly maze filled with shifting walls and monsters. Alongside other boys trapped in the Glade, he must discover the purpose of their imprisonment. The arrival of Teresa, the first girl, changes everything. Escape becomes both urgent and perilous. Themes of survival, identity, and courage dominate the tale. The mystery surrounding the maze hints at a larger dystopian world. It remains a gripping entry into young adult speculative fiction."
+    },
+    {
+        "Title": "The Da Vinci Code",
+        "Summary": "Dan Brown’s bestselling thriller follows symbologist Robert Langdon as he unravels a murder mystery in the Louvre. Clues hidden in Da Vinci’s works lead to a conspiracy about the Holy Grail. Partnering with cryptologist Sophie Neveu, Langdon races across Europe. The novel blends art, history, and suspense in a fast-paced narrative. Themes of faith, secrecy, and knowledge dominate. Though controversial, it captivated millions with its puzzles and revelations. It stands as one of the most famous thrillers of the 21st century."
+    },
+    {
+        "Title": "Angels & Demons",
+        "Summary": "In this Robert Langdon thriller, Langdon investigates a murder connected to the secret society of the Illuminati. The Vatican becomes the target of a deadly plot involving antimatter. As cardinals are assassinated, Langdon races to stop disaster. The novel blends science, religion, and history in a gripping tale. Themes of faith versus reason and power versus corruption dominate. The pace and twists keep readers enthralled. It established Dan Brown as a master of religious thrillers."
+    },
+    {
+        "Title": "Sherlock Holmes: The Hound of the Baskervilles",
+        "Summary": "Arthur Conan Doyle’s classic mystery sees Sherlock Holmes and Dr. Watson investigating the legend of a spectral hound haunting the Baskerville family. Set on the eerie moors of Devonshire, the case combines folklore with rational deduction. Watson takes center stage in much of the investigation. Holmes’s brilliance ultimately unravels the mystery. Themes of logic, superstition, and human greed dominate. The Gothic atmosphere adds to its enduring appeal. It remains one of the most beloved Holmes adventures."
+    },
+    {
+        "Title": "Murder on the Orient Express",
+        "Summary": "Agatha Christie’s masterpiece features Hercule Poirot solving a murder aboard a luxurious train stranded in snow. Each passenger harbors secrets, and nearly all have motives. Poirot’s meticulous deductions lead to a shocking conclusion about collective guilt. Themes of justice, morality, and truth dominate the story. The confined setting heightens the suspense. It stands as one of Christie’s most ingenious and enduring mysteries. Its twist ending has captivated generations of readers."
+    },
+    {
+        "Title": "The Girl with the Dragon Tattoo",
+        "Summary": "Stieg Larsson’s thriller introduces journalist Mikael Blomkvist and hacker Lisbeth Salander. Together, they investigate the decades-old disappearance of a young woman from a wealthy family. The case uncovers dark secrets of corruption and abuse. Lisbeth’s brilliance and trauma make her one of modern literature’s most complex heroines. Themes of justice, violence, and truth dominate. The novel blends mystery with social critique of power and misogyny. It launched the internationally acclaimed Millennium series."
+    },
+    {
+        "Title": "The Silence of the Lambs",
+        "Summary": "Thomas Harris’s psychological thriller features FBI trainee Clarice Starling seeking help from imprisoned cannibal Dr. Hannibal Lecter. She must catch serial killer Buffalo Bill before he strikes again. Lecter’s manipulations test Clarice’s resolve and intellect. The novel delves into psychology, power, and fear. Themes of identity, monstrosity, and manipulation dominate. Its chilling atmosphere redefined the crime thriller. It remains a cornerstone of modern suspense fiction."
+    },
+    {
+        "Title": "Shōgun",
+        "Summary": "James Clavell’s historical epic follows John Blackthorne, an English pilot shipwrecked in 17th-century Japan. Immersed in samurai culture, he navigates political intrigue and personal transformation. The novel vividly depicts cultural clashes and adaptation. Themes of honor, loyalty, and survival dominate. Clavell’s meticulous detail immerses readers in feudal Japan. Romance and rivalry intertwine with history. It remains one of the greatest works of historical fiction."
+    },
+    {
+        "Title": "Memoirs of a Geisha",
+        "Summary": "Arthur Golden’s novel tells the life story of Sayuri, a girl sold into servitude who becomes one of Kyoto’s most celebrated geisha. Through rigorous training, she learns the arts of performance and survival. Her life is shaped by beauty, rivalry, and longing. Themes of destiny, resilience, and sacrifice dominate. The novel offers a vivid glimpse into a hidden world of tradition. Sayuri’s voice blends vulnerability with strength. It endures as one of the most compelling works of historical fiction."
+    }
 ]

@@ -1,105 +1,88 @@
 from __future__ import annotations
 
 import os
-import io
-import base64
 from pathlib import Path
 from typing import Dict, Any, Optional
-import sys
 
 import streamlit as st
 
+# --- Make root importable (Docker + local) ---
+from pathlib import Path
+import sys
 ROOT = Path(__file__).resolve().parents[1]  # /app
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-# --- Our project imports ---
+# --- App imports ---
 from lib.config import AppConfig
-from lib.vector import ensure_index, search_books, reset_and_rebuild
+from lib.vector import ensure_index, search_books, reset_and_rebuild, _client, _collection
 from lib.moderation import moderate_text, looks_like_bad_words
 
-# Optional (if present). We'll fail gracefully if missing.
-try:
-    from lib.tts import tts_to_file as project_tts_to_file  # returns output filepath
-except Exception:
-    project_tts_to_file = None
-
-# ---------- OpenAI client (for TTS & image generation fallbacks) ----------
-from openai import OpenAI
-
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY", ""))
+from lib.tts import tts_to_file                        
+from lib.imagegen import generate_book_image   
+from lib.selector import llm_select        
 
 # ---------- Constants / Paths ----------
 OUTPUT_DIR = Path(os.getenv("OUTPUT_DIR", "/app/.cache"))
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 VOICE_DESCRIPTIONS = {
-    "alloy":   "Balanced, warm narrator. Neutral-lively tone; good for general summaries.",
-    "verse":   "Soft, poetic cadence with gentle emphasis—ideal for lyrical blurbs.",
-    "charlie": "Bright and upbeat; friendly guide vibe.",
-    "sage":    "Calm and thoughtful, slightly formal; great for reflective prose.",
-    "nova":    "Energetic modern tone; crisp pronunciation.",
+    "alloy":   "Balanced and warm narrator; great default.",
+    "verse":   "Soft, poetic cadence—lyrical feel.",
+    "charlie": "Bright, upbeat, friendly.",
+    "sage":    "Calm, reflective, slightly formal.",
+    "nova":    "Energetic, crisp, modern.",
 }
 
-IMAGE_STYLES = {
-    "Cinematic": "cinematic lighting, shallow depth of field, dramatic mood",
-    "Illustrated": "storybook illustration, ink and watercolor, whimsical",
-    "Minimalist": "clean minimalist poster, bold shapes, limited palette",
-    "Vintage": "retro book cover, aged paper texture, classic typography",
-}
+# Styles supported by your imagegen._style_phrase()
+IMAGE_STYLE_OPTIONS = [
+    "Default",
+    "Watercolor",
+    "Dark fantasy",
+    "Whimsical",
+    "Sci-fi neon",
+    "Minimalist",
+]
 
-DEFAULT_TTS_MODEL = "gpt-4o-mini-tts"
-DEFAULT_IMAGE_MODEL = "gpt-image-1"
 DEFAULT_IMAGE_SIZE = "1024x1024"
+DEFAULT_IMAGE_QUALITY = "medium"
 
 
-# ---------- Helpers ----------
+# ---------- Small helpers ----------
 def _ensure_key(k: str, default):
     if k not in st.session_state:
         st.session_state[k] = default
     return st.session_state[k]
 
-
-def tts_to_file_openai_fallback(text: str, voice: str = "alloy", basename: Optional[str] = None) -> str:
-    """Generate TTS using OpenAI directly; returns path to MP3 file."""
-    basename = basename or "tts_output"
-    out_path = OUTPUT_DIR / f"{basename}.mp3"
-    # Streaming is robust in Streamlit/dockers
-    with client.audio.speech.with_streaming_response.create(
-        model=DEFAULT_TTS_MODEL,
-        voice=voice,
-        input=text,
-        format="mp3",
-    ) as response:
-        response.stream_to_file(str(out_path))
-    return str(out_path)
-
-
-def generate_image_cover(prompt: str, style: str, basename: Optional[str] = None) -> str:
-    """Generate a cover image using gpt-image-1; returns path to PNG file."""
-    basename = basename or "cover"
-    out_path = OUTPUT_DIR / f"{basename}.png"
-    styled_prompt = f"Book cover concept. {prompt}\nStyle: {IMAGE_STYLES.get(style, style)}"
-    resp = client.images.generate(
-        model=DEFAULT_IMAGE_MODEL,
-        prompt=styled_prompt,
-        size=DEFAULT_IMAGE_SIZE,
-    )
-    b64 = resp.data[0].b64_json
-    img_bytes = base64.b64decode(b64)
-    with open(out_path, "wb") as f:
-        f.write(img_bytes)
-    return str(out_path)
-
-
 def recommend_top_book(query: str, cfg: AppConfig) -> Optional[Dict[str, Any]]:
-    """RAG search then pick the closest match."""
+    """RAG search, then optionally use LLM to choose among top-k."""
     ensure_index(cfg)
-    hits = search_books(query, k=3, cfg=cfg)
+    hits = search_books(query, k=cfg.top_k, cfg=cfg)
     if not hits:
         return None
-    # hits already sorted by score asc (0=best)
-    return hits[0]
+
+    # Default (vector-only) choice:
+    chosen = {**hits[0], "why": "Top semantic match from your query."}
+
+    if getattr(cfg, "use_llm", True):
+        try:
+            sel = llm_select(user_query=query, hits=hits, model_name=cfg.text_model)
+            # snap selected title to actual hit
+            title = sel.get("title") or chosen["title"]
+            match = next((h for h in hits if h.get("title") == title), hits[0])
+            chosen = {**match, "why": sel.get("why") or chosen["why"]}
+        except Exception:
+            # silently fall back to vector choice
+            pass
+
+    return chosen
+
+def _save_image_bytes(b: bytes, basename: str) -> str:
+    """Persist image bytes to disk and return path."""
+    out = OUTPUT_DIR / f"{basename}.png"
+    with open(out, "wb") as f:
+        f.write(b)
+    return str(out)
 
 
 # ---------- UI ----------
@@ -108,8 +91,13 @@ def main() -> None:
     st.set_page_config(page_title="Smart Librarian", layout="wide")
     st.title("📚 Smart Librarian")
 
-    # Hide admin/debug by default. Enable with SMARTLIB_ADMIN=1
-    admin = os.getenv("SMARTLIB_ADMIN", "0") == "1"
+    admin = cfg.admin  # show admin/debug UI only if SMARTLIB_ADMIN=1
+
+    # Conversation state
+    _ensure_key("history", [])           # list of {"role": "user"/"assistant", "content": "..."}
+    _ensure_key("assets", {})            # book_id -> {"image": path, "audio": path}
+    _ensure_key("blocked_by_moderation", False)
+    _ensure_key("last_reco", None)       # {"id","title","summary","score"}
 
     # Auto reset once per session (quiet for normal users)
     if cfg.auto_reset and "auto_reset_done" not in st.session_state:
@@ -120,61 +108,58 @@ def main() -> None:
                 st.warning(f"Index prepare notice: {e}")
         st.session_state["auto_reset_done"] = True
 
-    # Conversation state
-    _ensure_key("history", [])           # list of {"role": "user"/"assistant", "content": "..."}
-    _ensure_key("assets", {})            # book_id -> {"image": path, "audio": path}
-    _ensure_key("blocked_by_moderation", False)
-    _ensure_key("last_reco", None)       # {"id","title","summary","score"}
-
-    # Input area
+    # Input
     prompt = st.chat_input("Tell me what you’re in the mood for (genre, vibe, themes)…")
     if prompt:
-        # Moderation: block recommendations if content is flagged
+        # Moderation—block until next clean message
         flagged = False
         try:
-            mod = moderate_text(prompt)
-            flagged = bool(mod.get("flagged", False))
+            if cfg.moderation_on:
+                mod = moderate_text(prompt)
+                flagged = bool(mod.get("flagged", False))
         except Exception:
-            # Fallback heuristic if API not available
             flagged = looks_like_bad_words(prompt)
 
-        if flagged:
+        if cfg.moderation_block and flagged:
             st.session_state["blocked_by_moderation"] = True
             st.chat_message("assistant").markdown(
-                "⚠️ I sense rough language in thy request. "
-                "Pray, phrase thy wish more gently, and I shall fetch thee a fitting tome."
+                "⚠️ I sense rough language in your request. "
+                "Please rephrase and try again."
             )
         else:
             st.session_state["blocked_by_moderation"] = False
             st.session_state["history"].append({"role": "user", "content": prompt})
             with st.spinner("Consulting the stacks…"):
                 reco = recommend_top_book(prompt, cfg)
-            if not reco:
-                st.chat_message("assistant").markdown("I find no worthy match just yet. Try a different theme or author?")
-            else:
+            if reco:
                 st.session_state["last_reco"] = reco
-                st.session_state["history"].append(
-                    {"role": "assistant",
-                     "content": f"**{reco['title']}**\n\n{reco['summary']}"}
+                st.session_state["history"].append({
+                    "role": "assistant",
+                    "content": f"**{reco['title']}**\n\n{reco['summary']}\n\n*Why this book:* {reco.get('why','')}"
+                })
+            if not reco:
+                st.chat_message("assistant").markdown(
+                    "I find no worthy match yet. Try another genre, theme, or author?"
                 )
+            
 
     # Render history
     for turn in st.session_state["history"]:
         st.chat_message(turn["role"]).markdown(turn["content"])
 
-    # If we’re blocked, stop here until a new, clean prompt arrives
+    # Stop if blocked by moderation—no recos, no extras
     if st.session_state["blocked_by_moderation"]:
         return
 
-    # After a recommendation, offer TTS & Image buttons
+    # Extras after a recommendation
     reco = st.session_state.get("last_reco")
     if reco:
         st.divider()
         st.subheader("Enhance your recommendation")
 
-        colA, colB = st.columns(2)
+        colA, colB = st.columns(2, vertical_alignment="top")
 
-        # --- TTS panel ---
+        # --- TTS panel (uses your tts.py) ---
         with colA:
             st.markdown("**Listen to the summary**")
             voice = st.selectbox(
@@ -188,13 +173,8 @@ def main() -> None:
 
             if st.button("🔊 Generate audio", key=f"tts_btn_{reco['id']}"):
                 text = f"{reco['title']}. {reco['summary']}"
-                basename = f"tts_{reco['id']}"
                 try:
-                    if project_tts_to_file:
-                        audio_path = project_tts_to_file(text=text, voice=voice)
-                    else:
-                        audio_path = tts_to_file_openai_fallback(text=text, voice=voice, basename=basename)
-                    # persist
+                    audio_path = tts_to_file(text=text, voice=voice)
                     assets = st.session_state["assets"].get(reco["id"], {})
                     assets["audio"] = audio_path
                     st.session_state["assets"][reco["id"]] = assets
@@ -202,32 +182,32 @@ def main() -> None:
                 except Exception as e:
                     st.error(f"TTS failed: {e}")
 
-            # If we already have audio, show it
             assets = st.session_state["assets"].get(reco["id"], {})
             if "audio" in assets:
                 st.audio(assets["audio"])
 
-        # --- Image panel ---
+        # --- Image panel (uses your imagegen.py) ---
         with colB:
             st.markdown("**Generate a cover concept**")
             style = st.selectbox(
                 "Cover style",
-                list(IMAGE_STYLES.keys()),
+                IMAGE_STYLE_OPTIONS,
                 index=0,
                 key=f"imgstyle_{reco['id']}",
+                help="Art direction for the generated cover"
             )
-            st.caption(f"*{style}*: {IMAGE_STYLES[style]}")
+            st.caption("Image is generated by the AI; no real typography or logos are added.")
 
             if st.button("🖼️ Generate image", key=f"img_btn_{reco['id']}"):
-                # Build a concise image prompt from the summary
-                prompt_img = (
-                    f"Title: {reco['title']}. "
-                    f"Design a striking book cover that evokes key themes from this summary: "
-                    f"{reco['summary']}"
-                )
                 try:
-                    img_path = generate_image_cover(prompt_img, style=style, basename=f"cover_{reco['id']}")
-                    # persist
+                    raw = generate_book_image(
+                        title=reco["title"],
+                        summary=reco["summary"],
+                        style=style,
+                        size=DEFAULT_IMAGE_SIZE,
+                        quality=DEFAULT_IMAGE_QUALITY,
+                    )
+                    img_path = _save_image_bytes(raw, basename=f"cover_{reco['id']}")
                     assets = st.session_state["assets"].get(reco["id"], {})
                     assets["image"] = img_path
                     st.session_state["assets"][reco["id"]] = assets
@@ -241,11 +221,15 @@ def main() -> None:
 
     # Admin / debug (hidden by default)
     if admin:
+        cli = _client(cfg)
+        col = _collection(cli, cfg.embed_model)
+    
         with st.expander("Admin · Debug"):
             st.write("Session keys:", list(st.session_state.keys()))
             st.json({
                 "last_reco": st.session_state.get("last_reco"),
                 "assets": list(st.session_state.get("assets", {}).keys()),
+                "index_count": col.count(),
             })
             st.caption("Set SMARTLIB_ADMIN=0 to hide this section.")
 

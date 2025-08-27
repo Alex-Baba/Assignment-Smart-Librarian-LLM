@@ -32,7 +32,7 @@ class AppConfig:
     api_key: str = OPENAI_API_KEY
     embed_model: str = EMBED_MODEL_DEFAULT
     text_model: str = TEXT_MODEL_DEFAULT
-    top_k: int = int(os.getenv("TOP_K", "3"))
+    top_k: int = int(os.getenv("TOP_K", "5"))
     use_llm: bool = _env_bool("USE_LLM", True)
 
     # App behavior
